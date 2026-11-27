@@ -20,22 +20,22 @@ export class AdminTeamComponent implements OnInit {
   private fallbackTeamMembers: TeamMember[] = [
     {
       id: 1,
-      nomComplet: 'Dr Youness Kâa',
-      titre: 'Chirurgien-dentiste',
+      nomComplet: 'Dr Amine Benali',
+      titre: 'Médecin généraliste',
       photoUrl: 'assets/team-1.png',
-      photoAlt: 'Dr Youness Kâa, Chirurgien-dentiste au cabinet YT Smile Center',
-      description: 'Chirurgien-dentiste attentif et passionné, il accompagne chaque patient avec professionnalisme et bienveillance.',
+      photoAlt: 'Dr Amine Benali, Médecin généraliste au cabinet MediTrack',
+      description: 'Médecin généraliste attentif et passionné, il accompagne chaque patient avec professionnalisme et bienveillance.',
       specialite: 'Chirurgie dentaire, Omnipratique, Soins esthétiques',
       ordreAffichage: 1,
       actif: true
     },
     {
       id: 2,
-      nomComplet: 'Dr Tarik',
-      titre: 'Chirurgien-dentiste',
+      nomComplet: 'Dr Salma Idrissi',
+      titre: 'Médecin généraliste',
       photoUrl: 'assets/team-2.png',
-      photoAlt: 'Dr Tarik, Chirurgien-dentiste au cabinet YT Smile Center',
-      description: 'Chirurgien-dentiste attentif et engagé, il veille à offrir à chaque patient des soins de qualité dans un climat de confiance.',
+      photoAlt: 'Dr Salma Idrissi, Médecin généraliste au cabinet MediTrack',
+      description: 'Médecin généraliste attentif et engagé, il veille à offrir à chaque patient des soins de qualité dans un climat de confiance.',
       specialite: 'Chirurgie dentaire, Omnipratique, Soins préventifs',
       ordreAffichage: 2,
       actif: true

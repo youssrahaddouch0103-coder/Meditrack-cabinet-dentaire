@@ -29,10 +29,10 @@ public class CabinetSettingsInitializer implements CommandLineRunner {
         } else {
             repository.findFirstByOrderByIdAsc().ifPresent(settings -> {
                 settings.setGoogleMapsUrl("https://maps.app.goo.gl/SWdXYeqNsKtVG5yn6");
-                settings.setLatitude(33.8983378);
-                settings.setLongitude(-6.929946);
+                settings.setLatitude(33.8936);
+                settings.setLongitude(-5.5655);
                 repository.save(settings);
-                logger.info("Coordonnées GPS du cabinet synchronisées en BDD : lat=33.8983378, lng=-6.929946 (YT smile centre)");
+                logger.info("Coordonnées GPS du cabinet synchronisées en BDD : lat=33.8936, lng=-5.5655 (MediTrack)");
             });
         }
     }

@@ -21,7 +21,7 @@ public class AdminSecurityEmailServiceImpl implements AdminSecurityEmailService 
     @Value("${app.mail.from:${spring.mail.username:contact@meditrack.local}}")
     private String fromEmail;
 
-    @Value("${app.mail.cabinet-name:Cabinet Dentaire YT Smile Center}")
+    @Value("${app.mail.cabinet-name:centre médical MediTrack}")
     private String cabinetName;
 
     public AdminSecurityEmailServiceImpl(JavaMailSender mailSender) {

@@ -39,7 +39,7 @@ class EmailNotificationServiceTest {
     @BeforeEach
     void setUp() {
         ReflectionTestUtils.setField(appointmentEmailService, "fromEmail", "contact@meditrack.local");
-        ReflectionTestUtils.setField(appointmentEmailService, "cabinetName", "Cabinet dentaire YT Smile Center");
+        ReflectionTestUtils.setField(appointmentEmailService, "cabinetName", "centre médical MediTrack");
 
         rendezVous = new RendezVous();
         rendezVous.setId(1L);

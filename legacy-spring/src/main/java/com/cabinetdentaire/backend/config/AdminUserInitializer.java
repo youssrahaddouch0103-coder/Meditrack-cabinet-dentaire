@@ -37,7 +37,7 @@ public class AdminUserInitializer implements CommandLineRunner {
         utilisateurRepository.findByEmail("admin@cabinet.local").ifPresent(oldAdmin -> {
             oldAdmin.setEmail(targetEmail);
             if (oldAdmin.getNom() == null || oldAdmin.getNom().isBlank()) {
-                oldAdmin.setNom("Administrateur YT Smile Center");
+                oldAdmin.setNom("Administrateur MediTrack");
             }
             utilisateurRepository.save(oldAdmin);
             log.info("Migration compte admin@cabinet.local -> email: {}", targetEmail);
@@ -48,7 +48,7 @@ public class AdminUserInitializer implements CommandLineRunner {
             if (!targetEmail.equalsIgnoreCase("admin@meditrack.local")) {
                 legacyAdmin.setEmail(targetEmail);
                 if (legacyAdmin.getNom() == null || legacyAdmin.getNom().isBlank()) {
-                    legacyAdmin.setNom("Administrateur YT Smile Center");
+                    legacyAdmin.setNom("Administrateur MediTrack");
                 }
                 utilisateurRepository.save(legacyAdmin);
                 log.info("Migration compte admin@meditrack.local -> login_email: {}", targetEmail);
@@ -62,13 +62,13 @@ public class AdminUserInitializer implements CommandLineRunner {
             admin.setMotDePasse(passwordEncoder.encode(adminPassword));
             admin.setRole(Role.ADMIN);
             admin.setActif(true);
-            admin.setNom("Administrateur YT Smile Center");
+            admin.setNom("Administrateur MediTrack");
 
             utilisateurRepository.save(admin);
             log.info("Compte administrateur créé avec succès pour l'email: {}", targetEmail);
         } else {
             utilisateurRepository.findByEmail(targetEmail).ifPresent(existingAdmin -> {
-                existingAdmin.setNom("Administrateur YT Smile Center");
+                existingAdmin.setNom("Administrateur MediTrack");
                 existingAdmin.setMotDePasse(passwordEncoder.encode(adminPassword));
                 utilisateurRepository.save(existingAdmin);
                 log.info("Données du compte administrateur synchronisées avec succès.");

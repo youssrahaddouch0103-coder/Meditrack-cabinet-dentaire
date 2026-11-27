@@ -17,7 +17,7 @@ import { AuthService } from '../../../services/auth.service';
             <span class="material-symbols-outlined icon">admin_panel_settings</span>
           </div>
           <h1 class="login-title">Administration Cabinet</h1>
-          <p class="login-subtitle">Connectez-vous pour gérer le cabinet dentaire</p>
+          <p class="login-subtitle">Connectez-vous pour gérer le centre médical</p>
         </div>
 
         <!-- Error message banner -->

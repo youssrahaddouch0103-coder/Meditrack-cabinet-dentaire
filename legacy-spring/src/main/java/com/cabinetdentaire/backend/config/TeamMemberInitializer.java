@@ -23,22 +23,22 @@ public class TeamMemberInitializer implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         seedTeamMemberIfAbsent(
-                "Dr Youness Kâa",
-                "Chirurgien-dentiste",
+                "Dr Amine Benali",
+                "Médecin généraliste",
                 "Chirurgie dentaire, Omnipratique, Soins esthétiques",
-                "Chirurgien-dentiste attentif et passionné, il accompagne chaque patient avec professionnalisme et bienveillance.",
+                "Médecin généraliste attentif et passionné, il accompagne chaque patient avec professionnalisme et bienveillance.",
                 "assets/team-1.png",
-                "Dr Youness Kâa, Chirurgien-dentiste au cabinet YT Smile Center",
+                "Dr Amine Benali, Médecin généraliste au cabinet MediTrack",
                 1
         );
 
         seedTeamMemberIfAbsent(
-                "Dr Tarik",
-                "Chirurgien-dentiste",
+                "Dr Salma Idrissi",
+                "Médecin généraliste",
                 "Chirurgie dentaire, Omnipratique, Soins préventifs",
-                "Chirurgien-dentiste attentif et engagé, il veille à offrir à chaque patient des soins de qualité dans un climat de confiance.",
+                "Médecin généraliste attentif et engagé, il veille à offrir à chaque patient des soins de qualité dans un climat de confiance.",
                 "assets/team-2.png",
-                "Dr Tarik, Chirurgien-dentiste au cabinet YT Smile Center",
+                "Dr Salma Idrissi, Médecin généraliste au cabinet MediTrack",
                 2
         );
     }

@@ -14,25 +14,25 @@ export class CabinetSettingsService {
 
   private defaultSettings: CabinetSettings = {
     heroImageUrl: 'assets/hero-dentist.png',
-    heroImageAlt: 'Cabinet dentaire YT Smile Center à Témara',
+    heroImageAlt: 'centre médical MediTrack à Meknès',
     whyChooseUsImageUrl: 'assets/why-us-clinic.png',
-    whyChooseUsImageAlt: 'Intérieur moderne du cabinet dentaire avec équipements de pointe',
+    whyChooseUsImageAlt: 'Intérieur moderne du centre médical avec équipements de pointe',
     aboutImageUrl: 'assets/about-cabinet.png',
-    aboutImageAlt: 'Accueil et espace de soin lumineux du cabinet dentaire YT Smile Center',
+    aboutImageAlt: 'Accueil et espace de soin lumineux du centre médical MediTrack',
 
-    landlinePhone: '05 37 61 00 84',
-    mobilePhone: '06 71 35 95 70',
+    landlinePhone: '05 35 00 00 00',
+    mobilePhone: '06 00 00 00 00',
     email: 'contact@meditrack.local',
-    instagramUrl: 'https://www.instagram.com/yt_smile_center/',
+    instagramUrl: 'https://www.instagram.com/meditrack/',
 
     addressLine: 'Place El Hedim',
-    city: 'Témara',
-    postalCode: '12000',
+    city: 'Meknès',
+    postalCode: '50000',
     country: 'Maroc',
 
-    googleMapsUrl: 'https://maps.google.com/?q=Temara+Maroc',
-    latitude: 33.926,
-    longitude: -6.912,
+    googleMapsUrl: 'https://maps.google.com/?q=Meknes+Maroc',
+    latitude: 33.8936,
+    longitude: -5.5655,
 
     mondayMorning: '09:30 - 13:00',
     mondayAfternoon: '15:30 - 19:00',
@@ -126,7 +126,7 @@ export class CabinetSettingsService {
 
   formatWhatsAppLink(mobilePhone?: string): string {
     const raw = this.formatPhoneRaw(mobilePhone);
-    if (!raw) return 'https://wa.me/212671359570';
+    if (!raw) return 'https://wa.me/212600000000';
     if (raw.startsWith('0')) {
       return `https://wa.me/212${raw.substring(1)}`;
     }
@@ -134,7 +134,7 @@ export class CabinetSettingsService {
   }
 
   formatInstagramHandle(url?: string): string {
-    if (!url) return '@yt_smile_center';
+    if (!url) return '@meditrack';
     let clean = url.trim().replace(/\?.*$/, '').replace(/\/+$/, '');
     if (clean.includes('/')) {
       const parts = clean.split('/');
@@ -145,12 +145,12 @@ export class CabinetSettingsService {
     }
     if (clean.startsWith('@')) return clean;
     if (clean) return `@${clean}`;
-    return '@yt_smile_center';
+    return '@meditrack';
   }
 
   formatLocationDisplay(settings: CabinetSettings): string {
     const parts = [settings.addressLine, settings.city, settings.country].filter(Boolean);
-    return parts.join(', ') || 'Témara, Maroc';
+    return parts.join(', ') || 'Meknès, Maroc';
   }
 
   getGoogleMapsEmbedUrl(settings: CabinetSettings): string {
@@ -187,14 +187,14 @@ export class CabinetSettingsService {
       return `https://www.google.com/maps?q=${settings.latitude},${settings.longitude}&z=17&output=embed`;
     }
 
-    // 6. Query using exact full address (e.g. "Ain Atig, 448 Ibn Khaldoun, Av. Hassan II, Témara, Maroc")
+    // 6. Query using exact full address (e.g. "Ain Atig, 448 Ibn Khaldoun, Av. Hassan II, Meknès, Maroc")
     const addressQuery = [settings.addressLine, settings.city, settings.country].filter(Boolean).join(', ');
     if (addressQuery) {
       return `https://www.google.com/maps?q=${encodeURIComponent(addressQuery)}&z=17&output=embed`;
     }
 
     // 7. Default fallback
-    return `https://www.google.com/maps?q=Temara,+Maroc&z=17&output=embed`;
+    return `https://www.google.com/maps?q=Meknes,+Maroc&z=17&output=embed`;
   }
 
   getScheduleList(settings: CabinetSettings): FormattedScheduleDay[] {

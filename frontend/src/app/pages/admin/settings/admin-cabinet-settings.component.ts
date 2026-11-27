@@ -352,7 +352,7 @@ export class AdminCabinetSettingsComponent implements OnInit {
 
   copyEmergencyCodes(): void {
     if (this.generatedCodes.length > 0) {
-      const text = "CODES DE RÉCUPÉRATION D'URGENCE - CABINET DENTAIRE YT SMILE CENTER\n\n" +
+      const text = "CODES DE RÉCUPÉRATION D'URGENCE - CENTRE MÉDICAL MEDITRACK\n\n" +
         this.generatedCodes.map((c, i) => `${i + 1}. ${c}`).join('\n') +
         "\n\nAttention : Chaque code n'est utilisable qu'une seule fois. Conservez-les en lieu sûr !";
       navigator.clipboard.writeText(text);

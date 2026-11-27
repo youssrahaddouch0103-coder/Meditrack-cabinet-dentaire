@@ -8,10 +8,10 @@
         <span class="badge-text">Prendre rendez-vous</span>
       </div>
       <h2 class="appointment-title">
-        Réservez votre consultation chez <span class="gradient-text">YT Smile Center</span>
+        Réservez votre consultation chez <span class="gradient-text">MediTrack</span>
       </h2>
       <p class="appointment-description">
-        Remplissez le formulaire ci-dessous. Notre équipe vous recontactera rapidement pour vous confirmer la date et l’horaire de votre rendez-vous à {{ settings.city || 'Témara' }}.
+        Remplissez le formulaire ci-dessous. Notre équipe vous recontactera rapidement pour vous confirmer la date et l’horaire de votre rendez-vous à {{ settings.city || 'Meknès' }}.
       </p>
     </div>
 
@@ -21,7 +21,7 @@
       <div class="appointment-info-card">
         <h3 class="info-card-title">Informations & Horaires</h3>
         <p class="info-card-subtitle">
-          YT Smile Center vous accueille dans un environnement chaleureux, moderne et entièrement accessible à {{ settings.city || 'Témara' }}.
+          MediTrack vous accueille dans un environnement chaleureux, moderne et entièrement accessible à {{ settings.city || 'Meknès' }}.
         </p>
 
         <div class="info-list">
@@ -56,7 +56,7 @@
                 <span>Fixe : {{ settings.landlinePhone }}</span>
               </a>
               <a [href]="formatWhatsAppLink(settings.mobilePhone)" target="_blank" rel="noopener noreferrer" class="info-phone-link">
-                <span>Mobile / WhatsApp : <strong>{{ settings.mobilePhone || '06 71 35 95 70' }}</strong></span>
+                <span>Mobile / WhatsApp : <strong>{{ settings.mobilePhone || '06 00 00 00 00' }}</strong></span>
               </a>
             </div>
           </div>
@@ -79,7 +79,7 @@
             </div>
             <div class="info-text">
               <span class="info-label">Adresse du cabinet</span>
-              <a [href]="settings.googleMapsUrl || 'https://maps.google.com/?q=Temara+Maroc'" target="_blank" rel="noopener noreferrer" class="info-value" style="color: inherit; text-decoration: none;">
+              <a [href]="settings.googleMapsUrl || 'https://maps.google.com/?q=Meknes+Maroc'" target="_blank" rel="noopener noreferrer" class="info-value" style="color: inherit; text-decoration: none;">
                 <span>{{ formatLocationDisplay() }}</span>
               </a>
             </div>
@@ -161,7 +161,7 @@
                   id="phone" 
                   formControlName="phone" 
                   class="form-control" 
-                  placeholder="ex. 06 71 35 95 70"
+                  placeholder="ex. 06 00 00 00 00"
                   autocomplete="tel">
               </div>
               <div class="error-msg" *ngIf="f['phone'].invalid && (f['phone'].touched || isSubmitted)">

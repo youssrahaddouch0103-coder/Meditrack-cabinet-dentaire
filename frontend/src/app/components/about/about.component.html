@@ -7,7 +7,7 @@
         <div class="image-frame">
           <img 
             [src]="getImageUrl(settings.aboutImageUrl)" 
-            [alt]="settings.aboutImageAlt || 'Accueil et espace de soin lumineux du cabinet dentaire YT Smile Center'" 
+            [alt]="settings.aboutImageAlt || 'Accueil et espace de soin lumineux du centre médical MediTrack'" 
             class="about-image" 
             loading="lazy">
         </div>
@@ -19,7 +19,7 @@
           </div>
           <div class="card-text">
             <span class="card-main-text">Des soins de qualité</span>
-            <span class="card-sub-text">à Témara</span>
+            <span class="card-sub-text">à Meknès</span>
           </div>
         </div>
       </div>
@@ -67,11 +67,11 @@
         </a>
 
         <a 
-          [href]="settings.instagramUrl || 'https://www.instagram.com/yt_smile_center/'" 
+          [href]="settings.instagramUrl || 'https://www.instagram.com/meditrack/'" 
           target="_blank" 
           rel="noopener noreferrer" 
           class="instagram-badge-link"
-          aria-label="Consulter l'Instagram de YT Smile Center">
+          aria-label="Consulter l'Instagram de MediTrack">
           <span class="material-symbols-outlined insta-icon">photo_camera</span>
           <span>Suivez {{ formatInstagramHandle(settings.instagramUrl) }}</span>
         </a>
