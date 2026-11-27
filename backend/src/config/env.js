@@ -12,4 +12,6 @@ const env = {
 
 env.isTest = env.nodeEnv === 'test';
 
+if (env.isTest && !env.jwtSecret) env.jwtSecret = 'test-secret';
+
 module.exports = env;
