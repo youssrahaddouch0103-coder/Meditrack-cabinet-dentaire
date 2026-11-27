@@ -7,7 +7,8 @@ const SALT_ROUNDS = 12;
 const userSchema = new mongoose.Schema(
   {
     firstName: { type: String, required: [true, 'Le prénom est obligatoire'], trim: true, maxlength: 60 },
-    lastName: { type: String, required: [true, 'Le nom est obligatoire'], trim: true, maxlength: 60 },
+    // Obligatoire à l'inscription (validateur), facultatif pour les comptes créés par le seed
+    lastName: { type: String, trim: true, maxlength: 60, default: '' },
     email: {
       type: String,
       required: [true, "L'email est obligatoire"],
@@ -45,6 +46,7 @@ userSchema.methods.comparePassword = function comparePassword(candidate) {
 };
 
 userSchema.set('toJSON', {
+  virtuals: true,
   versionKey: false,
   transform: (doc, ret) => {
     delete ret.password;
