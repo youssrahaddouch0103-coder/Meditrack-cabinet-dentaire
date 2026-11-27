@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { HeroComponent } from '../../components/hero/hero.component';
+import { SpecialtiesComponent } from '../../components/specialties/specialties.component';
 import { ServicesComponent } from '../../components/services/services.component';
 import { WhyChooseUsComponent } from '../../components/why-choose-us/why-choose-us.component';
 import { AboutComponent } from '../../components/about/about.component';
@@ -18,6 +19,7 @@ import { FooterComponent } from '../../components/footer/footer.component';
     CommonModule,
     NavbarComponent,
     HeroComponent,
+    SpecialtiesComponent,
     ServicesComponent,
     WhyChooseUsComponent,
     AboutComponent,
@@ -31,6 +33,7 @@ import { FooterComponent } from '../../components/footer/footer.component';
     <app-navbar></app-navbar>
     <main class="app-main">
       <app-hero></app-hero>
+      <app-specialties></app-specialties>
       <app-services></app-services>
       <app-why-choose-us></app-why-choose-us>
       <app-about></app-about>

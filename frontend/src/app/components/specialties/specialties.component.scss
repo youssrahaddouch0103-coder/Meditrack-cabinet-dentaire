@@ -1,0 +1,48 @@
+.specialty-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.specialty-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.specialty-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.18), rgba(20, 184, 166, 0.18));
+  color: var(--color-brand-cyan);
+
+  .material-symbols-outlined { font-size: 1.7rem; }
+}
+
+.specialty-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.specialty-desc {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  flex: 1;
+}
+
+.specialty-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-brand-cyan);
+  text-decoration: none;
+
+  .material-symbols-outlined { font-size: 1.1rem; transition: transform 0.2s ease; }
+  &:hover .material-symbols-outlined { transform: translateX(3px); }
+}
