@@ -29,6 +29,8 @@ cd frontend && npm install && npm start       # front sur http://localhost:4200 
 ```
 
 Tests de l'API : `cd backend && npm test` (Jest + Supertest, MongoDB en mémoire, aucune base à lancer).
+Couverture de l'API : `npm run test:coverage` (seuil minimal 60 %).
+Tests du front : `cd frontend && npm run test:ci` (Karma + Jasmine en Chrome headless, couverture dans `coverage/frontend`).
 
 Il faut une base MongoDB qui tourne sur `localhost:27017` (ou lancer seulement `docker compose up -d mongo`).
 
