@@ -24,7 +24,7 @@ legacy-spring/  ancien backend Spring Boot, archivé pour référence
 
 ```bash
 cp .env.example .env          # puis remplir JWT_SECRET et ADMIN_PASSWORD
-cd backend && npm install && npm run dev      # API sur http://localhost:3000
+cd backend && npm install && npm run seed && npm run dev      # API sur http://localhost:3000
 cd frontend && npm install && npm start       # front sur http://localhost:4200 (proxy /api -> 3000)
 ```
 
