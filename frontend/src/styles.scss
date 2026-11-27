@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Global Theme & Styles - Cabinet Dentaire
+   Global Theme & Styles - centre médical
    Design System: Midnight Blue (Dark) & High-Contrast Light Theme
    ========================================================================== */
 
@@ -703,5 +703,69 @@ a, button, input, select, textarea {
   .location-map-card,
   .appointment-form-wrapper {
     border-radius: 20px !important;
+  }
+}
+
+/* ==========================================================================
+   Sections MediTrack (spécialités, médecins)
+   ========================================================================== */
+.mt-section {
+  padding: 4rem 0;
+  scroll-margin-top: 4rem;
+}
+
+.mt-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.mt-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.mt-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  color: var(--color-brand-cyan);
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.mt-title {
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--text-primary);
+  max-width: 760px;
+}
+
+.mt-subtitle {
+  margin-top: 0.85rem;
+  color: var(--text-secondary);
+  max-width: 640px;
+}
+
+.mt-card {
+  padding: 1.5rem;
+  border-radius: 20px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-glass);
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-glass-bright);
+    background: var(--bg-surface-hover);
   }
 }

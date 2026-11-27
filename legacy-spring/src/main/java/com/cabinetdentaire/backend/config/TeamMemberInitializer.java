@@ -28,7 +28,7 @@ public class TeamMemberInitializer implements CommandLineRunner {
                 "Chirurgie dentaire, Omnipratique, Soins esthétiques",
                 "Chirurgien-dentiste attentif et passionné, il accompagne chaque patient avec professionnalisme et bienveillance.",
                 "assets/team-1.png",
-                "Dr Youness Kâa, Chirurgien-dentiste au cabinet YT Smile Center",
+                "Dr Youness Kâa, Chirurgien-dentiste au cabinet MediTrack",
                 1
         );
 
@@ -38,7 +38,7 @@ public class TeamMemberInitializer implements CommandLineRunner {
                 "Chirurgie dentaire, Omnipratique, Soins préventifs",
                 "Chirurgien-dentiste attentif et engagé, il veille à offrir à chaque patient des soins de qualité dans un climat de confiance.",
                 "assets/team-2.png",
-                "Dr Tarik, Chirurgien-dentiste au cabinet YT Smile Center",
+                "Dr Tarik, Chirurgien-dentiste au cabinet MediTrack",
                 2
         );
     }

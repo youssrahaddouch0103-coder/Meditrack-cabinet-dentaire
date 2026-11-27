@@ -35,6 +35,7 @@ export class ContactComponent implements OnInit {
     'Demande d’information',
     'Rendez-vous',
     'Soins et tarifs',
+    'Urgence médicale',
     'Urgence dentaire',
     'Réclamation',
     'Autre'

@@ -1,0 +1,23 @@
+<section class="mt-section" id="specialites">
+  <div class="mt-container">
+    <header class="mt-header">
+      <span class="mt-badge"><span class="badge-dot"></span>Nos spécialités</span>
+      <h2 class="mt-title">Une équipe pluridisciplinaire pour <span class="gradient-text">toute la famille</span></h2>
+      <p class="mt-subtitle">Du médecin traitant au spécialiste, MediTrack réunit plusieurs disciplines dans un même centre, avec un dossier médical partagé entre vos praticiens.</p>
+    </header>
+
+    <div class="specialty-grid">
+      <article class="mt-card specialty-card" *ngFor="let s of specialties">
+        <div class="specialty-icon">
+          <span class="material-symbols-outlined">{{ s.icon }}</span>
+        </div>
+        <h3 class="specialty-name">{{ s.name }}</h3>
+        <p class="specialty-desc">{{ s.description }}</p>
+        <a href="#rendez-vous" class="specialty-link" (click)="book(s.name, $event)">
+          Prendre rendez-vous
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+      </article>
+    </div>
+  </div>
+</section>

@@ -7,7 +7,7 @@
         <div class="image-frame">
           <img 
             [src]="getImageUrl(settings.aboutImageUrl)" 
-            [alt]="settings.aboutImageAlt || 'Accueil et espace de soin lumineux du cabinet dentaire YT Smile Center'" 
+            [alt]="settings.aboutImageAlt || 'Accueil et espace de soin lumineux du centre médical MediTrack'" 
             class="about-image" 
             loading="lazy">
         </div>
@@ -36,7 +36,7 @@
 
       <!-- Section Title -->
       <h2 class="about-title">
-        Un cabinet moderne dédié à votre <span class="gradient-text">santé bucco-dentaire</span>
+        Un centre moderne dédié à <span class="gradient-text">votre santé</span>
       </h2>
 
       <!-- Two Short Paragraphs -->
@@ -45,7 +45,7 @@
           {{ cabinet.presentation }}
         </p>
         <p class="about-paragraph">
-          Notre cabinet associe des soins dentaires personnalisés aux technologies actuelles dans une atmosphère sereine. Chaque prise en charge est élaborée sur mesure, dans le respect de votre santé et de votre confort.
+          Notre centre réunit plusieurs spécialités médicales et des outils numériques actuels dans une atmosphère sereine. Chaque prise en charge est élaborée sur mesure, dans le respect de votre santé et de votre confort.
         </p>
       </div>
 
@@ -71,7 +71,7 @@
           target="_blank" 
           rel="noopener noreferrer" 
           class="instagram-badge-link"
-          aria-label="Consulter l'Instagram de YT Smile Center">
+          aria-label="Consulter l'Instagram de MediTrack">
           <span class="material-symbols-outlined insta-icon">photo_camera</span>
           <span>Suivez {{ formatInstagramHandle(settings.instagramUrl) }}</span>
         </a>

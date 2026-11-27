@@ -8,7 +8,7 @@
         <span class="badge-text">Prendre rendez-vous</span>
       </div>
       <h2 class="appointment-title">
-        Réservez votre consultation chez <span class="gradient-text">YT Smile Center</span>
+        Réservez votre consultation chez <span class="gradient-text">MediTrack</span>
       </h2>
       <p class="appointment-description">
         Remplissez le formulaire ci-dessous. Notre équipe vous recontactera rapidement pour vous confirmer la date et l’horaire de votre rendez-vous à {{ settings.city || 'Témara' }}.
@@ -21,7 +21,7 @@
       <div class="appointment-info-card">
         <h3 class="info-card-title">Informations & Horaires</h3>
         <p class="info-card-subtitle">
-          YT Smile Center vous accueille dans un environnement chaleureux, moderne et entièrement accessible à {{ settings.city || 'Témara' }}.
+          MediTrack vous accueille dans un environnement chaleureux, moderne et entièrement accessible à {{ settings.city || 'Témara' }}.
         </p>
 
         <div class="info-list">
@@ -202,12 +202,12 @@
               <div class="input-wrapper">
                 <span class="material-symbols-outlined field-icon">medical_services</span>
                 <select id="careType" formControlName="careType" class="form-control select-control">
-                  <option value="" disabled selected>Sélectionnez un soin</option>
+                  <option value="" disabled selected>Sélectionnez une spécialité ou un soin</option>
                   <option *ngFor="let care of careOptions" [value]="care">{{ care }}</option>
                 </select>
               </div>
               <div class="error-msg" *ngIf="f['careType'].invalid && (f['careType'].touched || isSubmitted)">
-                <span *ngIf="f['careType'].errors?.['required']">Veuillez choisir le soin souhaité.</span>
+                <span *ngIf="f['careType'].errors?.['required']">Veuillez choisir une spécialité ou un soin.</span>
               </div>
             </div>
           </div>

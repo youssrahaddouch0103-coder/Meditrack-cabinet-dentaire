@@ -36,10 +36,10 @@ public class MessageContactService {
 
         MessageContact saved = messageContactRepository.save(msg);
 
-        // 1. Notification interne transmise au Cabinet (FROM: contact@meditrack.local -> TO: contact@meditrack.local, REPLY-TO: patient@gmail.com)
+        // 1. Notification interne transmise au Cabinet (FROM: ytsmilecenter@gmail.com -> TO: ytsmilecenter@gmail.com, REPLY-TO: patient@gmail.com)
         appointmentEmailService.sendContactMessageNotificationToCabinet(saved);
 
-        // 2. Accusé de réception automatique transmis au Patient (FROM: contact@meditrack.local -> TO: patient@gmail.com)
+        // 2. Accusé de réception automatique transmis au Patient (FROM: ytsmilecenter@gmail.com -> TO: patient@gmail.com)
         appointmentEmailService.sendContactAcknowledgementToPatient(saved);
 
         return MessageContactResponse.fromEntity(saved);

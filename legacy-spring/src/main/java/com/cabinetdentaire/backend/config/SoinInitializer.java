@@ -28,7 +28,7 @@ public class SoinInitializer implements CommandLineRunner {
 
         @Override
         public void run(String... args) {
-                logger.info("Vérification et initialisation des soins du cabinet YT Smile Center en base de données...");
+                logger.info("Vérification et initialisation des soins du cabinet MediTrack en base de données...");
 
                 createCareIfNotExists(
                                 "couronne-zircone",

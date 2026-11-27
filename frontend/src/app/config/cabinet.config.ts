@@ -28,7 +28,7 @@ export interface TimeSlotOption {
 }
 
 export const CABINET_INFO: CabinetInfo = {
-  name: 'YT Smile Center',
+  name: 'MediTrack',
   city: 'Témara',
   country: 'Maroc',
   locationDisplay: 'Témara, Maroc',
@@ -38,8 +38,8 @@ export const CABINET_INFO: CabinetInfo = {
   phoneMobileRaw: '0671359570',
   instagramUrl: 'https://www.instagram.com/yt_smile_center/',
   instagramHandle: '@yt_smile_center',
-  slogan: 'Votre sourire, notre priorité',
-  presentation: 'YT Smile Center vous accueille à Témara et vous propose des soins dentaires modernes, personnalisés et réalisés dans un environnement chaleureux et rassurant.',
+  slogan: 'Votre santé, notre priorité',
+  presentation: 'MediTrack vous accueille à Témara dans un centre médical pluridisciplinaire : consultations, suivi de votre dossier et prise de rendez-vous en ligne.',
   demoAddress: 'Place El Hedim, Meknès, Maroc',
   addressDisclaimer: 'Adresse de démonstration — à remplacer'
 };

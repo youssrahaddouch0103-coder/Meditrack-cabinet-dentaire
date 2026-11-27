@@ -20,7 +20,7 @@ import { ADMIN_PAGE_ROLES, ROLE_LABELS } from '../../../config/access.config';
           <div class="brand-area" (click)="goToDashboard()">
             <span class="material-symbols-outlined brand-icon">medical_services</span>
             <div class="brand-text">
-              <span class="brand-title">YT Smile Center</span>
+              <span class="brand-title">MediTrack</span>
               <span class="brand-badge">Espace Admin</span>
             </div>
           </div>
