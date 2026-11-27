@@ -1,3 +1,4 @@
+import { EntityId } from '../models/common.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -39,20 +40,20 @@ export class RendezVousService {
     return this.http.get<RendezVousResponse[]>(this.adminUrl, { params });
   }
 
-  obtenirRendezVousParIdAdmin(id: number): Observable<RendezVousResponse> {
+  obtenirRendezVousParIdAdmin(id: EntityId): Observable<RendezVousResponse> {
     return this.http.get<RendezVousResponse>(`${this.adminUrl}/${id}`);
   }
 
-  confirmerRendezVousAdmin(id: number): Observable<RendezVousResponse> {
+  confirmerRendezVousAdmin(id: EntityId): Observable<RendezVousResponse> {
     return this.http.patch<RendezVousResponse>(`${this.adminUrl}/${id}/confirmer`, {});
   }
 
-  refuserRendezVousAdmin(id: number, motifRefus?: string): Observable<RendezVousResponse> {
+  refuserRendezVousAdmin(id: EntityId, motifRefus?: string): Observable<RendezVousResponse> {
     const body: RefusRendezVousRequest = { motifRefus };
     return this.http.patch<RendezVousResponse>(`${this.adminUrl}/${id}/refuser`, body);
   }
 
-  annulerRendezVousAdmin(id: number): Observable<RendezVousResponse> {
+  annulerRendezVousAdmin(id: EntityId): Observable<RendezVousResponse> {
     return this.http.patch<RendezVousResponse>(`${this.adminUrl}/${id}/annuler`, {});
   }
 }

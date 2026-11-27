@@ -1,3 +1,4 @@
+import { EntityId } from '../../../models/common.model';
 import { Component, OnInit, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -19,7 +20,7 @@ export class AdminTeamComponent implements OnInit {
 
   private fallbackTeamMembers: TeamMember[] = [
     {
-      id: 1,
+      id: '1',
       nomComplet: 'Dr Youness Kâa',
       titre: 'Chirurgien-dentiste',
       photoUrl: 'assets/team-1.png',
@@ -30,7 +31,7 @@ export class AdminTeamComponent implements OnInit {
       actif: true
     },
     {
-      id: 2,
+      id: '2',
       nomComplet: 'Dr Tarik',
       titre: 'Chirurgien-dentiste',
       photoUrl: 'assets/team-2.png',
@@ -45,7 +46,7 @@ export class AdminTeamComponent implements OnInit {
   // Modal State for Add / Edit
   isModalOpen = false;
   isEditMode = false;
-  editingMemberId: number | null = null;
+  editingMemberId: EntityId | null = null;
   isSubmitting = false;
   modalErrorMessage = '';
 

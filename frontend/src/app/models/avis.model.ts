@@ -1,3 +1,4 @@
+import { EntityId } from './common.model';
 export type StatutAvis = 'EN_ATTENTE' | 'APPROUVE' | 'REFUSE';
 
 export interface CreationAvisRequest {
@@ -8,7 +9,7 @@ export interface CreationAvisRequest {
 }
 
 export interface AvisResponse {
-  id: number;
+  id: EntityId;
   nomAuteur: string;
   note: number;
   soinConcerne: string;

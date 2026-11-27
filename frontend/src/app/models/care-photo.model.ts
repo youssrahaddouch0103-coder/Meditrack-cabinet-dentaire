@@ -1,5 +1,6 @@
+import { EntityId } from './common.model';
 export interface CarePhoto {
-  id: number;
+  id: EntityId;
   careId: string;
   fileName: string;
   imageUrl: string;
@@ -17,5 +18,5 @@ export interface UpdateCarePhotoRequest {
 }
 
 export interface ReorderPhotosRequest {
-  photoIdsInOrder: number[];
+  photoIdsInOrder: EntityId[];
 }

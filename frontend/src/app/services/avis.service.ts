@@ -1,3 +1,4 @@
+import { EntityId } from '../models/common.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -36,19 +37,19 @@ export class AvisService {
     return this.http.get<{ count: number }>(`${this.adminUrl}/en-attente-count`);
   }
 
-  obtenirAvisParIdAdmin(id: number): Observable<AvisResponse> {
+  obtenirAvisParIdAdmin(id: EntityId): Observable<AvisResponse> {
     return this.http.get<AvisResponse>(`${this.adminUrl}/${id}`);
   }
 
-  approuverAvisAdmin(id: number): Observable<{ message: string; avis: AvisResponse }> {
+  approuverAvisAdmin(id: EntityId): Observable<{ message: string; avis: AvisResponse }> {
     return this.http.patch<{ message: string; avis: AvisResponse }>(`${this.adminUrl}/${id}/approuver`, {});
   }
 
-  refuserAvisAdmin(id: number): Observable<{ message: string; avis: AvisResponse }> {
+  refuserAvisAdmin(id: EntityId): Observable<{ message: string; avis: AvisResponse }> {
     return this.http.patch<{ message: string; avis: AvisResponse }>(`${this.adminUrl}/${id}/refuser`, {});
   }
 
-  supprimerAvisAdmin(id: number): Observable<{ message: string }> {
+  supprimerAvisAdmin(id: EntityId): Observable<{ message: string }> {
     return this.http.delete<{ message: string }>(`${this.adminUrl}/${id}`);
   }
 }

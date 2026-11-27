@@ -17,7 +17,7 @@ export class TeamComponent implements OnInit {
 
   private fallbackTeamMembers: TeamMember[] = [
     {
-      id: 1,
+      id: '1',
       nomComplet: 'Dr Youness Kâa',
       titre: 'Chirurgien-dentiste',
       photoUrl: 'assets/team-1.png',
@@ -29,7 +29,7 @@ export class TeamComponent implements OnInit {
       actif: true
     },
     {
-      id: 2,
+      id: '2',
       nomComplet: 'Dr Tarik',
       titre: 'Chirurgien-dentiste',
       photoUrl: 'assets/team-2.png',
@@ -77,7 +77,7 @@ export class TeamComponent implements OnInit {
     return specialite.split(',').map(s => s.trim()).filter(s => s.length > 0);
   }
 
-  trackByMemberId(index: number, item: TeamMember): number {
+  trackByMemberId(index: number, item: TeamMember): string {
     return item.id;
   }
 

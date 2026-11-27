@@ -1,3 +1,4 @@
+import { EntityId } from '../models/common.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, catchError, of } from 'rxjs';
@@ -53,7 +54,7 @@ export class CarePhotoService {
     );
   }
 
-  setCoverPhoto(photoId: number): Observable<CarePhoto> {
+  setCoverPhoto(photoId: EntityId): Observable<CarePhoto> {
     return this.http.put<CarePhoto>(
       `${this.adminApiUrl}/soins/photos/${photoId}/cover`,
       {},
@@ -61,7 +62,7 @@ export class CarePhotoService {
     );
   }
 
-  updatePhotoInfo(photoId: number, request: UpdateCarePhotoRequest): Observable<CarePhoto> {
+  updatePhotoInfo(photoId: EntityId, request: UpdateCarePhotoRequest): Observable<CarePhoto> {
     return this.http.put<CarePhoto>(
       `${this.adminApiUrl}/soins/photos/${photoId}`,
       request,
@@ -69,7 +70,7 @@ export class CarePhotoService {
     );
   }
 
-  reorderPhotos(careSlug: string, photoIdsInOrder: number[]): Observable<CarePhoto[]> {
+  reorderPhotos(careSlug: string, photoIdsInOrder: EntityId[]): Observable<CarePhoto[]> {
     const body: ReorderPhotosRequest = { photoIdsInOrder };
     return this.http.put<CarePhoto[]>(
       `${this.adminApiUrl}/soins/${careSlug}/photos/reorder`,
@@ -78,7 +79,7 @@ export class CarePhotoService {
     );
   }
 
-  deletePhoto(photoId: number): Observable<void> {
+  deletePhoto(photoId: EntityId): Observable<void> {
     return this.http.delete<void>(
       `${this.adminApiUrl}/soins/photos/${photoId}`,
       { headers: this.getAuthHeaders() }

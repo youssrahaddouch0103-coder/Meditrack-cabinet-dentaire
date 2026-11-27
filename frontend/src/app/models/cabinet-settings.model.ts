@@ -1,5 +1,6 @@
+import { EntityId } from './common.model';
 export interface CabinetSettings {
-  id?: number;
+  id?: EntityId;
 
   // Photos du site
   heroImageUrl?: string;

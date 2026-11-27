@@ -1,3 +1,4 @@
+import { EntityId } from './common.model';
 export type StatutRendezVous = 'EN_ATTENTE' | 'CONFIRME' | 'REFUSE' | 'ANNULE';
 
 export interface CreationRendezVousRequest {
@@ -11,7 +12,7 @@ export interface CreationRendezVousRequest {
 }
 
 export interface RendezVousResponse {
-  id: number;
+  id: EntityId;
   nomComplet: string;
   telephone: string;
   email: string;

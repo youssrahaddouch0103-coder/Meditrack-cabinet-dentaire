@@ -142,7 +142,7 @@ export class ServicesComponent implements OnInit, OnDestroy {
     if (slug.includes('zircone')) {
       return [
         {
-          id: 1,
+          id: '1',
           careId: service.id,
           fileName: 'couronne-zircone-1.png',
           imageUrl: 'assets/images/soins/couronne-zircone-1.png',
@@ -153,7 +153,7 @@ export class ServicesComponent implements OnInit, OnDestroy {
           createdAt: now
         },
         {
-          id: 2,
+          id: '2',
           careId: service.id,
           fileName: 'couronne-zircone-2.png',
           imageUrl: 'assets/images/soins/couronne-zircone-2.png',
@@ -164,7 +164,7 @@ export class ServicesComponent implements OnInit, OnDestroy {
           createdAt: now
         },
         {
-          id: 3,
+          id: '3',
           careId: service.id,
           fileName: 'couronne-zircone-3.png',
           imageUrl: 'assets/images/soins/couronne-zircone-3.png',
@@ -178,7 +178,7 @@ export class ServicesComponent implements OnInit, OnDestroy {
     } else if (slug.includes('composite')) {
       return [
         {
-          id: 4,
+          id: '4',
           careId: service.id,
           fileName: 'restauration-composite-1.png',
           imageUrl: 'assets/images/soins/restauration-composite-1.png',
@@ -189,7 +189,7 @@ export class ServicesComponent implements OnInit, OnDestroy {
           createdAt: now
         },
         {
-          id: 5,
+          id: '5',
           careId: service.id,
           fileName: 'restauration-composite-2.png',
           imageUrl: 'assets/images/soins/restauration-composite-2.png',
@@ -200,7 +200,7 @@ export class ServicesComponent implements OnInit, OnDestroy {
           createdAt: now
         },
         {
-          id: 6,
+          id: '6',
           careId: service.id,
           fileName: 'restauration-composite-3.png',
           imageUrl: 'assets/images/soins/restauration-composite-3.png',
@@ -214,7 +214,7 @@ export class ServicesComponent implements OnInit, OnDestroy {
     } else if (slug.includes('amovible')) {
       return [
         {
-          id: 7,
+          id: '7',
           careId: service.id,
           fileName: 'prothese-amovible-1.png',
           imageUrl: 'assets/images/soins/prothese-amovible-1.png',
@@ -225,7 +225,7 @@ export class ServicesComponent implements OnInit, OnDestroy {
           createdAt: now
         },
         {
-          id: 8,
+          id: '8',
           careId: service.id,
           fileName: 'prothese-amovible-2.png',
           imageUrl: 'assets/images/soins/prothese-amovible-2.png',
@@ -236,7 +236,7 @@ export class ServicesComponent implements OnInit, OnDestroy {
           createdAt: now
         },
         {
-          id: 9,
+          id: '9',
           careId: service.id,
           fileName: 'prothese-amovible-3.png',
           imageUrl: 'assets/images/soins/prothese-amovible-3.png',
@@ -250,7 +250,7 @@ export class ServicesComponent implements OnInit, OnDestroy {
     } else if (slug.includes('detartrage')) {
       return [
         {
-          id: 10,
+          id: '10',
           careId: service.id,
           fileName: 'detartrage-1.png',
           imageUrl: 'assets/images/soins/detartrage-1.png',
@@ -261,7 +261,7 @@ export class ServicesComponent implements OnInit, OnDestroy {
           createdAt: now
         },
         {
-          id: 11,
+          id: '11',
           careId: service.id,
           fileName: 'detartrage-2.png',
           imageUrl: 'assets/images/soins/detartrage-2.png',
@@ -272,7 +272,7 @@ export class ServicesComponent implements OnInit, OnDestroy {
           createdAt: now
         },
         {
-          id: 12,
+          id: '12',
           careId: service.id,
           fileName: 'detartrage-3.png',
           imageUrl: 'assets/images/soins/detartrage-3.png',
@@ -286,7 +286,7 @@ export class ServicesComponent implements OnInit, OnDestroy {
     } else {
       return [
         {
-          id: 13,
+          id: '13',
           careId: service.id,
           fileName: 'blanchiment-dentaire-1.png',
           imageUrl: 'assets/images/soins/blanchiment-dentaire-1.png',
@@ -297,7 +297,7 @@ export class ServicesComponent implements OnInit, OnDestroy {
           createdAt: now
         },
         {
-          id: 14,
+          id: '14',
           careId: service.id,
           fileName: 'blanchiment-dentaire-2.png',
           imageUrl: 'assets/images/soins/blanchiment-dentaire-2.png',
@@ -308,7 +308,7 @@ export class ServicesComponent implements OnInit, OnDestroy {
           createdAt: now
         },
         {
-          id: 15,
+          id: '15',
           careId: service.id,
           fileName: 'blanchiment-dentaire-3.png',
           imageUrl: 'assets/images/soins/blanchiment-dentaire-3.png',
