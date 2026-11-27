@@ -2,27 +2,13 @@ import { HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 
+/** Ajoute le JWT à tous les appels vers l'API MediTrack (/api). */
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
-  const authService = inject(AuthService);
-  
-  let token = authService.getToken();
-  if (!token && typeof window !== 'undefined' && window.localStorage) {
-    token = localStorage.getItem('cabinet_admin_jwt_token') ||
-            localStorage.getItem('admin_jwt_token') ||
-            localStorage.getItem('token') ||
-            localStorage.getItem('accessToken') ||
-            localStorage.getItem('jwt') ||
-            localStorage.getItem('authToken');
-  }
+  const token = inject(AuthService).getToken();
+  const isApiCall = req.url.startsWith('/api') || req.url.includes('/api/');
 
-  if (token && (req.url.includes('/api/admin') || req.url.includes('/admin/'))) {
-    const authReq = req.clone({
-      setHeaders: {
-        Authorization: `Bearer ${token}`
-      }
-    });
-    return next(authReq);
+  if (token && isApiCall) {
+    return next(req.clone({ setHeaders: { Authorization: `Bearer ${token}` } }));
   }
-
   return next(req);
 };

@@ -6,12 +6,17 @@ import { AdminResetPasswordComponent } from './pages/admin/reset-password/admin-
 import { AdminLayoutComponent } from './pages/admin/layout/admin-layout.component';
 import { AdminDashboardComponent } from './pages/admin/dashboard/admin-dashboard.component';
 import { AdminRendezVousComponent } from './pages/admin/rendez-vous/admin-rendez-vous.component';
-import { authGuard } from './guards/auth.guard';
+import { roleGuard } from './guards/role.guard';
+import { ADMIN_PAGE_ROLES, STAFF_ROLES } from './config/access.config';
 
 export const routes: Routes = [
   {
     path: '',
     component: HomeComponent
+  },
+  {
+    path: 'inscription',
+    loadComponent: () => import('./pages/register/register.component').then(m => m.RegisterComponent)
   },
   {
     path: 'admin/connexion',
@@ -32,7 +37,8 @@ export const routes: Routes = [
   {
     path: 'admin',
     component: AdminLayoutComponent,
-    canActivate: [authGuard],
+    canActivate: [roleGuard],
+    data: { roles: STAFF_ROLES },
     children: [
       {
         path: '',
@@ -41,30 +47,44 @@ export const routes: Routes = [
       },
       {
         path: 'tableau-de-bord',
+        canActivate: [roleGuard],
+        data: { roles: ADMIN_PAGE_ROLES['tableau-de-bord'] },
         component: AdminDashboardComponent
       },
       {
         path: 'rendez-vous',
+        canActivate: [roleGuard],
+        data: { roles: ADMIN_PAGE_ROLES['rendez-vous'] },
         component: AdminRendezVousComponent
       },
       {
         path: 'soins',
+        canActivate: [roleGuard],
+        data: { roles: ADMIN_PAGE_ROLES['soins'] },
         loadComponent: () => import('./pages/admin/soins/admin-soins.component').then(m => m.AdminSoinsComponent)
       },
       {
         path: 'messages',
+        canActivate: [roleGuard],
+        data: { roles: ADMIN_PAGE_ROLES['messages'] },
         loadComponent: () => import('./pages/admin/messages/admin-messages.component').then(m => m.AdminMessagesComponent)
       },
       {
         path: 'avis',
+        canActivate: [roleGuard],
+        data: { roles: ADMIN_PAGE_ROLES['avis'] },
         loadComponent: () => import('./pages/admin/avis/admin-avis.component').then(m => m.AdminAvisComponent)
       },
       {
         path: 'equipe',
+        canActivate: [roleGuard],
+        data: { roles: ADMIN_PAGE_ROLES['equipe'] },
         loadComponent: () => import('./pages/admin/team/admin-team.component').then(m => m.AdminTeamComponent)
       },
       {
         path: 'contenu',
+        canActivate: [roleGuard],
+        data: { roles: ADMIN_PAGE_ROLES['contenu'] },
         loadComponent: () => import('./pages/admin/settings/admin-cabinet-settings.component').then(m => m.AdminCabinetSettingsComponent)
       }
     ]

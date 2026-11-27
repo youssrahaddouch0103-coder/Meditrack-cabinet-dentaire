@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, RouterModule } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
+import { JwtAuthResponse, isTwoFactorChallenge } from '../../../models/auth.model';
+import { STAFF_ROLES } from '../../../config/access.config';
 
 @Component({
   selector: 'app-admin-login',
@@ -14,9 +16,9 @@ import { AuthService } from '../../../services/auth.service';
         
         <div class="login-header">
           <div class="icon-circle">
-            <span class="material-symbols-outlined icon">admin_panel_settings</span>
+            <span class="material-symbols-outlined icon">{{ challengeId ? 'pin' : 'admin_panel_settings' }}</span>
           </div>
-          <h1 class="login-title">Administration Cabinet</h1>
+          <h1 class="login-title">{{ challengeId ? 'Vérification en deux étapes' : 'Connexion MediTrack' }}</h1>
           <p class="login-subtitle">Connectez-vous pour gérer le centre médical</p>
         </div>
 
@@ -26,7 +28,7 @@ import { AuthService } from '../../../services/auth.service';
           <span>{{ errorMessage }}</span>
         </div>
 
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form" novalidate autocomplete="off">
+        <form *ngIf="!challengeId" [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form" novalidate autocomplete="off">
           
           <!-- Email field -->
           <div class="form-group" [class.has-error]="f['email'].invalid && (f['email'].touched || isSubmitted)">
@@ -84,7 +86,41 @@ import { AuthService } from '../../../services/auth.service';
 
         </form>
 
+
+        <!-- Étape 2 : code reçu par email -->
+        <form *ngIf="challengeId" [formGroup]="codeForm" (ngSubmit)="onSubmitCode()" class="login-form" novalidate autocomplete="off">
+          <div class="form-group" [class.has-error]="codeForm.controls['code'].invalid && (codeForm.controls['code'].touched || isCodeSubmitted)">
+            <label for="code" class="form-label">Code à 6 chiffres</label>
+            <div class="input-wrapper">
+              <span class="material-symbols-outlined field-icon">pin</span>
+              <input
+                type="text"
+                id="code"
+                formControlName="code"
+                class="form-control code-input"
+                inputmode="numeric"
+                maxlength="6"
+                placeholder="123456"
+                autocomplete="one-time-code">
+            </div>
+            <div class="error-msg" *ngIf="codeForm.controls['code'].invalid && (codeForm.controls['code'].touched || isCodeSubmitted)">
+              <span>Saisissez les 6 chiffres reçus par email.</span>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-login" [disabled]="isLoading" [class.loading]="isLoading">
+            <span class="material-symbols-outlined btn-icon" *ngIf="!isLoading">verified_user</span>
+            <span class="material-symbols-outlined btn-spinner" *ngIf="isLoading">sync</span>
+            <span>{{ isLoading ? 'Vérification...' : 'Valider le code' }}</span>
+          </button>
+
+          <button type="button" class="btn-link" (click)="restart()">Renvoyer un code / changer de compte</button>
+        </form>
+
         <div class="login-footer">
+          <p class="register-hint" *ngIf="!challengeId">
+            Pas encore de compte ? <a routerLink="/inscription">Créer un compte patient</a>
+          </p>
           <a routerLink="/" class="back-link">
             <span class="material-symbols-outlined">arrow_back</span>
             <span>Retour au site public</span>
@@ -290,6 +326,27 @@ import { AuthService } from '../../../services/auth.service';
       100% { transform: rotate(360deg); }
     }
 
+    .code-input {
+      letter-spacing: 0.5em;
+      font-size: 1.25rem;
+      text-align: center;
+    }
+    .btn-link {
+      background: none;
+      border: none;
+      color: #0284c7;
+      font-size: 0.85rem;
+      cursor: pointer;
+      text-decoration: underline;
+      align-self: center;
+    }
+    .register-hint {
+      font-size: 0.9rem;
+      color: #64748b;
+      margin-bottom: 12px;
+      text-align: center;
+      a { color: #0284c7; font-weight: 600; }
+    }
     .login-footer {
       margin-top: 28px;
       text-align: center;
@@ -312,7 +369,11 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class AdminLoginComponent implements OnInit, AfterViewInit {
   loginForm!: FormGroup;
+  codeForm!: FormGroup;
   isSubmitted = false;
+  isCodeSubmitted = false;
+  challengeId: string | null = null;
+  challengeMessage = '';
   isLoading = false;
   showPassword = false;
   errorMessage = '';
@@ -336,6 +397,10 @@ export class AdminLoginComponent implements OnInit, AfterViewInit {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       motDePasse: ['', [Validators.required]]
+    });
+
+    this.codeForm = this.fb.group({
+      code: ['', [Validators.required, Validators.pattern(/^\d{6}$/)]]
     });
   }
 
@@ -368,20 +433,66 @@ export class AdminLoginComponent implements OnInit, AfterViewInit {
     this.isLoading = true;
 
     this.authService.login(this.loginForm.value).subscribe({
-      next: () => {
+      next: (response) => {
         this.isLoading = false;
-        this.router.navigateByUrl(this.returnUrl);
+        if (isTwoFactorChallenge(response)) {
+          this.challengeId = response.challengeId;
+          this.challengeMessage = response.message;
+          return;
+        }
+        this.redirectAfterLogin(response);
       },
       error: (err) => {
         this.isLoading = false;
-        if (err.status === 401) {
-          this.errorMessage = 'Identifiants incorrects. Veuillez vérifier votre adresse e-mail et votre mot de passe.';
-        } else if (err.status === 0) {
-          this.errorMessage = 'Impossible de contacter le serveur d’authentification (Backend).';
-        } else {
-          this.errorMessage = err.error?.message || 'Erreur lors de la connexion. Veuillez réessayer.';
-        }
+        this.errorMessage = this.describeError(err);
       }
     });
+  }
+
+  onSubmitCode(): void {
+    this.isCodeSubmitted = true;
+    this.errorMessage = '';
+    if (this.codeForm.invalid || !this.challengeId) {
+      this.codeForm.markAllAsTouched();
+      return;
+    }
+
+    this.isLoading = true;
+    this.authService.verifyTwoFactor(this.challengeId, this.codeForm.value.code.trim()).subscribe({
+      next: (response) => {
+        this.isLoading = false;
+        this.redirectAfterLogin(response);
+      },
+      error: (err) => {
+        this.isLoading = false;
+        this.errorMessage = this.describeError(err);
+        // Code expiré ou compte bloqué : il faut recommencer depuis le mot de passe
+        if (err.status === 423 || /expiré/i.test(err.error?.message || '')) {
+          this.challengeId = null;
+        }
+        this.codeForm.reset();
+      }
+    });
+  }
+
+  restart(): void {
+    this.challengeId = null;
+    this.errorMessage = '';
+    this.codeForm.reset();
+    this.isCodeSubmitted = false;
+  }
+
+  private redirectAfterLogin(response: JwtAuthResponse): void {
+    const isStaff = STAFF_ROLES.includes(response.role);
+    this.router.navigateByUrl(isStaff ? this.returnUrl : '/');
+  }
+
+  private describeError(err: any): string {
+    if (err.status === 0) return 'Impossible de contacter le serveur. Vérifiez que l’API est lancée.';
+    if (err.status === 429) return 'Trop de tentatives. Patientez quelques minutes avant de réessayer.';
+    if (err.status === 401 && !err.error?.message) {
+      return 'Identifiants incorrects. Veuillez vérifier votre adresse e-mail et votre mot de passe.';
+    }
+    return err.error?.message || 'Erreur lors de la connexion. Veuillez réessayer.';
   }
 }
