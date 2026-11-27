@@ -24,3 +24,10 @@ exports.verifyTwoFactor = [
   body('challengeId').isMongoId().withMessage('Défi 2FA invalide'),
   body('code').trim().matches(/^\d{6}$/).withMessage('Le code contient 6 chiffres')
 ];
+
+exports.forgotPassword = [body('email').trim().isEmail().withMessage('Email invalide')];
+
+exports.resetPassword = [
+  body('token').isHexadecimal().isLength({ min: 64, max: 64 }).withMessage('Lien invalide'),
+  password('newPassword')
+];

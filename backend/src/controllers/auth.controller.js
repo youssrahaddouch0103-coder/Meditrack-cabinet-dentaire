@@ -4,6 +4,7 @@ const ApiError = require('../utils/ApiError');
 const env = require('../config/env');
 const { signToken } = require('../utils/token');
 const twoFactor = require('../services/twoFactor.service');
+const passwordReset = require('../services/passwordReset.service');
 
 function authResponse(user) {
   return {
@@ -75,6 +76,17 @@ exports.verifyTwoFactor = async (req, res) => {
     default:
       throw ApiError.unauthorized('Code expiré. Reconnectez-vous pour en recevoir un nouveau.');
   }
+};
+
+exports.forgotPassword = async (req, res) => {
+  await passwordReset.requestReset(req.body.email);
+  res.json({ success: true, message: 'Si un compte existe pour cet email, un lien de réinitialisation vient d’être envoyé.' });
+};
+
+exports.resetPassword = async (req, res) => {
+  const ok = await passwordReset.resetPassword(req.body.token, req.body.newPassword);
+  if (!ok) throw ApiError.badRequest('Lien invalide ou expiré. Refaites une demande.');
+  res.json({ success: true, message: 'Mot de passe modifié. Vous pouvez vous connecter.' });
 };
 
 exports.me = (req, res) => {

@@ -4,6 +4,7 @@ import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { ContactService } from '../../../services/contact.service';
 import { AvisService } from '../../../services/avis.service';
+import { ADMIN_PAGE_ROLES, ROLE_LABELS } from '../../../config/access.config';
 
 @Component({
   selector: 'app-admin-layout',
@@ -26,33 +27,33 @@ import { AvisService } from '../../../services/avis.service';
 
           <!-- Desktop Navigation Bar (Center) -->
           <nav class="admin-navigation desktop-nav">
-            <a routerLink="/admin/tableau-de-bord" routerLinkActive="active" class="nav-item" (click)="closeMobileMenu()">
+            <a *ngIf="can('tableau-de-bord')" routerLink="/admin/tableau-de-bord" routerLinkActive="active" class="nav-item" (click)="closeMobileMenu()">
               <span class="material-symbols-outlined">dashboard</span>
               <span>Tableau de bord</span>
             </a>
-            <a routerLink="/admin/rendez-vous" routerLinkActive="active" class="nav-item" (click)="closeMobileMenu()">
+            <a *ngIf="can('rendez-vous')" routerLink="/admin/rendez-vous" routerLinkActive="active" class="nav-item" (click)="closeMobileMenu()">
               <span class="material-symbols-outlined">calendar_month</span>
               <span>Rendez-vous</span>
             </a>
-            <a routerLink="/admin/soins" routerLinkActive="active" class="nav-item" (click)="closeMobileMenu()">
+            <a *ngIf="can('soins')" routerLink="/admin/soins" routerLinkActive="active" class="nav-item" (click)="closeMobileMenu()">
               <span class="material-symbols-outlined">collections</span>
               <span>Soins & Photos</span>
             </a>
-            <a routerLink="/admin/messages" routerLinkActive="active" class="nav-item" (click)="closeMobileMenu()">
+            <a *ngIf="can('messages')" routerLink="/admin/messages" routerLinkActive="active" class="nav-item" (click)="closeMobileMenu()">
               <span class="material-symbols-outlined">mail</span>
               <span>Messages</span>
               <span class="unread-nav-badge" *ngIf="unreadMessagesCount > 0">{{ unreadMessagesCount }}</span>
             </a>
-            <a routerLink="/admin/avis" routerLinkActive="active" class="nav-item" (click)="closeMobileMenu()">
+            <a *ngIf="can('avis')" routerLink="/admin/avis" routerLinkActive="active" class="nav-item" (click)="closeMobileMenu()">
               <span class="material-symbols-outlined">rate_review</span>
               <span>Avis</span>
               <span class="unread-nav-badge" *ngIf="pendingAvisCount > 0">{{ pendingAvisCount }}</span>
             </a>
-            <a routerLink="/admin/equipe" routerLinkActive="active" class="nav-item" (click)="closeMobileMenu()">
+            <a *ngIf="can('equipe')" routerLink="/admin/equipe" routerLinkActive="active" class="nav-item" (click)="closeMobileMenu()">
               <span class="material-symbols-outlined">badge</span>
               <span>Équipe</span>
             </a>
-            <a routerLink="/admin/contenu" routerLinkActive="active" class="nav-item" (click)="closeMobileMenu()">
+            <a *ngIf="can('contenu')" routerLink="/admin/contenu" routerLinkActive="active" class="nav-item" (click)="closeMobileMenu()">
               <span class="material-symbols-outlined">settings_suggest</span>
               <span>Contenu du cabinet</span>
             </a>
@@ -66,7 +67,7 @@ import { AvisService } from '../../../services/avis.service';
           <div class="admin-user-actions">
             <div class="user-info" [title]="userEmail">
               <span class="material-symbols-outlined user-avatar">account_circle</span>
-              <span class="user-email">{{ userEmail }}</span>
+              <span class="user-email">{{ userEmail }}<small *ngIf="roleLabel"> · {{ roleLabel }}</small></span>
             </div>
 
             <button (click)="logout()" class="btn-logout" title="Déconnexion">
@@ -89,33 +90,33 @@ import { AvisService } from '../../../services/avis.service';
 
         <!-- Mobile Dropdown Navigation Panel -->
         <nav class="mobile-nav-panel" *ngIf="isMobileMenuOpen">
-          <a routerLink="/admin/tableau-de-bord" routerLinkActive="active" class="mobile-nav-item" (click)="closeMobileMenu()">
+          <a *ngIf="can('tableau-de-bord')" routerLink="/admin/tableau-de-bord" routerLinkActive="active" class="mobile-nav-item" (click)="closeMobileMenu()">
             <span class="material-symbols-outlined">dashboard</span>
             <span>Tableau de bord</span>
           </a>
-          <a routerLink="/admin/rendez-vous" routerLinkActive="active" class="mobile-nav-item" (click)="closeMobileMenu()">
+          <a *ngIf="can('rendez-vous')" routerLink="/admin/rendez-vous" routerLinkActive="active" class="mobile-nav-item" (click)="closeMobileMenu()">
             <span class="material-symbols-outlined">calendar_month</span>
             <span>Rendez-vous</span>
           </a>
-          <a routerLink="/admin/soins" routerLinkActive="active" class="mobile-nav-item" (click)="closeMobileMenu()">
+          <a *ngIf="can('soins')" routerLink="/admin/soins" routerLinkActive="active" class="mobile-nav-item" (click)="closeMobileMenu()">
             <span class="material-symbols-outlined">collections</span>
             <span>Soins & Photos</span>
           </a>
-          <a routerLink="/admin/messages" routerLinkActive="active" class="mobile-nav-item" (click)="closeMobileMenu()">
+          <a *ngIf="can('messages')" routerLink="/admin/messages" routerLinkActive="active" class="mobile-nav-item" (click)="closeMobileMenu()">
             <span class="material-symbols-outlined">mail</span>
             <span>Messages</span>
             <span class="unread-nav-badge" *ngIf="unreadMessagesCount > 0">{{ unreadMessagesCount }}</span>
           </a>
-          <a routerLink="/admin/avis" routerLinkActive="active" class="mobile-nav-item" (click)="closeMobileMenu()">
+          <a *ngIf="can('avis')" routerLink="/admin/avis" routerLinkActive="active" class="mobile-nav-item" (click)="closeMobileMenu()">
             <span class="material-symbols-outlined">rate_review</span>
             <span>Avis</span>
             <span class="unread-nav-badge" *ngIf="pendingAvisCount > 0">{{ pendingAvisCount }}</span>
           </a>
-          <a routerLink="/admin/equipe" routerLinkActive="active" class="mobile-nav-item" (click)="closeMobileMenu()">
+          <a *ngIf="can('equipe')" routerLink="/admin/equipe" routerLinkActive="active" class="mobile-nav-item" (click)="closeMobileMenu()">
             <span class="material-symbols-outlined">badge</span>
             <span>Équipe</span>
           </a>
-          <a routerLink="/admin/contenu" routerLinkActive="active" class="mobile-nav-item" (click)="closeMobileMenu()">
+          <a *ngIf="can('contenu')" routerLink="/admin/contenu" routerLinkActive="active" class="mobile-nav-item" (click)="closeMobileMenu()">
             <span class="material-symbols-outlined">settings_suggest</span>
             <span>Contenu du cabinet</span>
           </a>
@@ -432,7 +433,20 @@ export class AdminLayoutComponent implements OnInit {
     this.chargerCompteurs();
   }
 
+  /** Affiche un lien du menu seulement si le rôle connecté y a accès. */
+  can(page: string): boolean {
+    const roles = ADMIN_PAGE_ROLES[page];
+    return !!roles && this.authService.hasRole(...roles);
+  }
+
+  get roleLabel(): string {
+    const role = this.authService.getRole();
+    return role ? ROLE_LABELS[role] : '';
+  }
+
   chargerCompteurs(): void {
+    // Les compteurs messages / avis ne concernent que l'administrateur
+    if (!this.authService.hasRole('admin')) return;
     this.contactService.compterMessagesNonLusAdmin().subscribe({
       next: (res) => {
         this.unreadMessagesCount = res.count;
