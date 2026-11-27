@@ -167,17 +167,17 @@ public class CabinetSettingsServiceImpl implements CabinetSettingsService {
     private CabinetSettings createDefaultSettings() {
         CabinetSettings settings = new CabinetSettings();
         settings.setHeroImageUrl("assets/hero-dentist.png");
-        settings.setHeroImageAlt("Cabinet dentaire YT Smile Center à Témara");
+        settings.setHeroImageAlt("centre médical MediTrack à Témara");
 
         settings.setWhyChooseUsImageUrl("assets/why-us-clinic.png");
-        settings.setWhyChooseUsImageAlt("Intérieur moderne du cabinet dentaire avec équipements de pointe");
+        settings.setWhyChooseUsImageAlt("Intérieur moderne du centre médical avec équipements de pointe");
 
         settings.setAboutImageUrl("assets/about-cabinet.png");
-        settings.setAboutImageAlt("Accueil et espace de soin lumineux du cabinet dentaire YT Smile Center");
+        settings.setAboutImageAlt("Accueil et espace de soin lumineux du centre médical MediTrack");
 
         settings.setLandlinePhone("05 37 61 00 84");
         settings.setMobilePhone("06 71 35 95 70");
-        settings.setEmail("contact@meditrack.local");
+        settings.setEmail("ytsmilecenter@gmail.com");
         settings.setInstagramUrl("https://www.instagram.com/yt_smile_center/");
 
         settings.setAddressLine("Avenue Moulay Youssef");

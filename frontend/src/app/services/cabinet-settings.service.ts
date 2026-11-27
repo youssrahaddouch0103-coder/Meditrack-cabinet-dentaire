@@ -14,15 +14,15 @@ export class CabinetSettingsService {
 
   private defaultSettings: CabinetSettings = {
     heroImageUrl: 'assets/hero-dentist.png',
-    heroImageAlt: 'Cabinet dentaire YT Smile Center à Témara',
+    heroImageAlt: 'centre médical MediTrack à Témara',
     whyChooseUsImageUrl: 'assets/why-us-clinic.png',
-    whyChooseUsImageAlt: 'Intérieur moderne du cabinet dentaire avec équipements de pointe',
+    whyChooseUsImageAlt: 'Intérieur moderne du centre médical avec équipements de pointe',
     aboutImageUrl: 'assets/about-cabinet.png',
-    aboutImageAlt: 'Accueil et espace de soin lumineux du cabinet dentaire YT Smile Center',
+    aboutImageAlt: 'Accueil et espace de soin lumineux du centre médical MediTrack',
 
     landlinePhone: '05 37 61 00 84',
     mobilePhone: '06 71 35 95 70',
-    email: 'contact@meditrack.local',
+    email: 'ytsmilecenter@gmail.com',
     instagramUrl: 'https://www.instagram.com/yt_smile_center/',
 
     addressLine: 'Place El Hedim',
