@@ -17,7 +17,8 @@ export class NavbarComponent {
 
   navLinks = [
     { id: 'accueil', label: 'Accueil' },
-    { id: 'cabinet', label: 'Le cabinet' },
+    { id: 'cabinet', label: 'Le centre' },
+    { id: 'specialites', label: 'Spécialités' },
     { id: 'soins', label: 'Soins' },
     { id: 'equipe', label: 'Équipe' },
     { id: 'contact', label: 'Contact' }

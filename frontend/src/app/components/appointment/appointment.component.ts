@@ -4,6 +4,7 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, AbstractContro
 import { Subscription } from 'rxjs';
 import { RendezVousService } from '../../services/rendez-vous.service';
 import { CareService } from '../../services/care.service';
+import { SPECIALTIES } from '../../config/medical.config';
 import { CabinetSettingsService } from '../../services/cabinet-settings.service';
 import { CabinetSettings } from '../../models/cabinet-settings.model';
 import { TIME_SLOT_OPTIONS } from '../../config/cabinet.config';
@@ -42,7 +43,8 @@ export class AppointmentComponent implements OnInit, OnDestroy {
   errorMessage = '';
 
   minDate: string = new Date().toISOString().split('T')[0];
-  careOptions: string[] = [];
+  /** Spécialités médicales, puis soins dentaires renvoyés par l'API. */
+  careOptions: string[] = SPECIALTIES.map(s => s.name);
 
   private careSubscription!: Subscription;
   private settingsSubscription!: Subscription;
@@ -75,7 +77,8 @@ export class AppointmentComponent implements OnInit, OnDestroy {
     this.careService.getPublicCareTitles().subscribe({
       next: (titres) => {
         if (titres && titres.length > 0) {
-          this.careOptions = titres;
+          const specialties = SPECIALTIES.map(s => s.name);
+          this.careOptions = [...specialties, ...titres.filter(t => !specialties.includes(t))];
         }
       }
     });
