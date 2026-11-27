@@ -30,7 +30,18 @@ cd frontend && npm install && npm start       # front sur http://localhost:4200 
 
 Tests de l'API : `cd backend && npm test` (Jest + Supertest, MongoDB en mémoire, aucune base à lancer).
 
-Il faut une base MongoDB qui tourne sur `localhost:27017` (Docker arrive avec US02).
+Il faut une base MongoDB qui tourne sur `localhost:27017` (ou lancer seulement `docker compose up -d mongo`).
+
+## Lancer avec Docker
+
+```bash
+cp .env.example .env                    # remplir JWT_SECRET (32 caractères min.) et ADMIN_PASSWORD
+docker compose up -d --build            # mongo + api + front
+docker compose exec api npm run seed    # admin, spécialités et médecins (une seule fois)
+```
+
+Le site est sur http://localhost:8080 (port modifiable avec `WEB_PORT`, adresse publique avec `PUBLIC_URL`). Nginx sert le front et relaie `/api` vers l'API.
+Les données MongoDB et les fichiers envoyés sont gardés dans les volumes `mongo-data` et `uploads`.
 
 ## Convention Git
 
