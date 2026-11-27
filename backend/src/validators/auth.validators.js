@@ -19,3 +19,8 @@ exports.login = [
     message: 'Mot de passe obligatoire'
   })
 ];
+
+exports.verifyTwoFactor = [
+  body('challengeId').isMongoId().withMessage('Défi 2FA invalide'),
+  body('code').trim().matches(/^\d{6}$/).withMessage('Le code contient 6 chiffres')
+];
