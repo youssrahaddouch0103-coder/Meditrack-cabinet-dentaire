@@ -10,5 +10,5 @@ exports.specialties = [
 
 exports.doctors = [
   { firstName: 'Youness', lastName: 'Kâa', email: 'youness.kaa@meditrack.ma', title: 'Chirurgien-dentiste', specialty: 'dentaire' },
-  { firstName: 'Tarik', lastName: 'À compléter', email: 'tarik@meditrack.ma', title: 'Chirurgien-dentiste', specialty: 'dentaire' }
+  { firstName: 'Tarik', lastName: '', email: 'tarik@meditrack.ma', title: 'Chirurgien-dentiste', specialty: 'dentaire' }
 ];

@@ -1,3 +1,4 @@
+import { EntityId } from '../models/common.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject, catchError, map, of } from 'rxjs';
@@ -58,7 +59,7 @@ export class CareService {
       catchError((err) => {
         console.warn('[CareService] API publique indisponible, utilisation du fallback statique.', err);
         const fallback: Soin[] = SOINS_LIST.map((item, index) => ({
-          id: index + 1,
+          id: String(index + 1),
           codeSlug: item.id,
           titre: item.title,
           descriptionCourte: item.shortDescription,
@@ -91,7 +92,7 @@ export class CareService {
         const item = SOINS_LIST.find(s => s.id === identifier || s.title.toLowerCase().includes(identifier.toLowerCase()));
         if (item) {
           const fallback: Soin = {
-            id: 1,
+            id: '1',
             codeSlug: item.id,
             titre: item.title,
             descriptionCourte: item.shortDescription,
@@ -156,7 +157,7 @@ export class CareService {
     return this.http.put<Soin>(url, formData, { headers: this.getAuthHeaders() });
   }
 
-  reordonnerSoins(soinIdsInOrder: number[]): Observable<Soin[]> {
+  reordonnerSoins(soinIdsInOrder: EntityId[]): Observable<Soin[]> {
     return this.http.put<Soin[]>(
       `${this.adminApiUrl}/reorder`,
       { soinIdsInOrder },
@@ -164,7 +165,7 @@ export class CareService {
     );
   }
 
-  supprimerOuArchiverSoin(id: number | string): Observable<void> {
+  supprimerOuArchiverSoin(id: EntityId | string): Observable<void> {
     return this.http.delete<void>(`${this.adminApiUrl}/${id}`, { headers: this.getAuthHeaders() });
   }
 }

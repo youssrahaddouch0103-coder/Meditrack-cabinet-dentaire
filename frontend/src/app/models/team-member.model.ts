@@ -1,5 +1,6 @@
+import { EntityId } from './common.model';
 export interface TeamMember {
-  id: number;
+  id: EntityId;
   nomComplet: string;
   titre: string;
   specialite?: string;

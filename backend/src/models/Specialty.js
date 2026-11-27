@@ -11,6 +11,6 @@ const specialtySchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-specialtySchema.set('toJSON', { versionKey: false });
+specialtySchema.set('toJSON', { virtuals: true, versionKey: false });
 
 module.exports = mongoose.model('Specialty', specialtySchema);

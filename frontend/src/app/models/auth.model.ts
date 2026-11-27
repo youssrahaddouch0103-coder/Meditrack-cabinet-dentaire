@@ -1,3 +1,4 @@
+import { EntityId } from './common.model';
 export interface LoginRequest {
   email: string;
   motDePasse: string;
@@ -16,7 +17,7 @@ export interface GenericResponse {
 }
 
 export interface AdminAccountInfoResponse {
-  id: number;
+  id: EntityId;
   nom: string;
   loginEmail: string;
   role: string;

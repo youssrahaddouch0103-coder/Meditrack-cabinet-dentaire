@@ -1,3 +1,4 @@
+import { isPersistedId } from '../../../models/common.model';
 import { Component, OnInit, OnDestroy, HostListener, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -187,7 +188,7 @@ export class AdminSoinsComponent implements OnInit, OnDestroy {
 
   private getFallbackAdminSoins(): Soin[] {
     return SOINS_LIST.map((item, index) => ({
-      id: index + 1,
+      id: String(index + 1),
       codeSlug: item.id,
       titre: item.title,
       descriptionCourte: item.shortDescription,
@@ -205,33 +206,33 @@ export class AdminSoinsComponent implements OnInit, OnDestroy {
 
     if (s.includes('zircone')) {
       return [
-        { id: 1, careId: slug, fileName: 'couronne-zircone-1.png', imageUrl: 'assets/images/soins/couronne-zircone-1.png', altText: 'Couronne en zircone - Pose clinique et rendu naturel', caption: 'Photo 1 / 3 — Vue de face et esthétique dentaire', displayOrder: 1, isCover: true, createdAt: now },
-        { id: 2, careId: slug, fileName: 'couronne-zircone-2.png', imageUrl: 'assets/images/soins/couronne-zircone-2.png', altText: 'Couronne en zircone - Vue rapprochée des détails céramiques', caption: 'Photo 2 / 3 — Préparation clinique et empreinte de précision', displayOrder: 2, isCover: false, createdAt: now },
-        { id: 3, careId: slug, fileName: 'couronne-zircone-3.png', imageUrl: 'assets/images/soins/couronne-zircone-3.png', altText: 'Couronne en zircone - Sourire harmonieux rétabli', caption: 'Photo 3 / 3 — Résultat esthétique final après cimentation', displayOrder: 3, isCover: false, createdAt: now }
+        { id: '1', careId: slug, fileName: 'couronne-zircone-1.png', imageUrl: 'assets/images/soins/couronne-zircone-1.png', altText: 'Couronne en zircone - Pose clinique et rendu naturel', caption: 'Photo 1 / 3 — Vue de face et esthétique dentaire', displayOrder: 1, isCover: true, createdAt: now },
+        { id: '2', careId: slug, fileName: 'couronne-zircone-2.png', imageUrl: 'assets/images/soins/couronne-zircone-2.png', altText: 'Couronne en zircone - Vue rapprochée des détails céramiques', caption: 'Photo 2 / 3 — Préparation clinique et empreinte de précision', displayOrder: 2, isCover: false, createdAt: now },
+        { id: '3', careId: slug, fileName: 'couronne-zircone-3.png', imageUrl: 'assets/images/soins/couronne-zircone-3.png', altText: 'Couronne en zircone - Sourire harmonieux rétabli', caption: 'Photo 3 / 3 — Résultat esthétique final après cimentation', displayOrder: 3, isCover: false, createdAt: now }
       ];
     } else if (s.includes('composite')) {
       return [
-        { id: 4, careId: slug, fileName: 'restauration-composite-1.png', imageUrl: 'assets/images/soins/restauration-composite-1.png', altText: 'Restauration en résine composite naturelle', caption: 'Photo 1 / 3 — Obturation invisible de la cavité', displayOrder: 1, isCover: true, createdAt: now },
-        { id: 5, careId: slug, fileName: 'restauration-composite-2.png', imageUrl: 'assets/images/soins/restauration-composite-2.png', altText: 'Sélection de la teinte biomimétique', caption: 'Photo 2 / 3 — Application stratifiée de la résine', displayOrder: 2, isCover: false, createdAt: now },
-        { id: 6, careId: slug, fileName: 'restauration-composite-3.png', imageUrl: 'assets/images/soins/restauration-composite-3.png', altText: 'Polissage et lissage de surface', caption: 'Photo 3 / 3 — Brillance et intégration marginale parfaite', displayOrder: 3, isCover: false, createdAt: now }
+        { id: '4', careId: slug, fileName: 'restauration-composite-1.png', imageUrl: 'assets/images/soins/restauration-composite-1.png', altText: 'Restauration en résine composite naturelle', caption: 'Photo 1 / 3 — Obturation invisible de la cavité', displayOrder: 1, isCover: true, createdAt: now },
+        { id: '5', careId: slug, fileName: 'restauration-composite-2.png', imageUrl: 'assets/images/soins/restauration-composite-2.png', altText: 'Sélection de la teinte biomimétique', caption: 'Photo 2 / 3 — Application stratifiée de la résine', displayOrder: 2, isCover: false, createdAt: now },
+        { id: '6', careId: slug, fileName: 'restauration-composite-3.png', imageUrl: 'assets/images/soins/restauration-composite-3.png', altText: 'Polissage et lissage de surface', caption: 'Photo 3 / 3 — Brillance et intégration marginale parfaite', displayOrder: 3, isCover: false, createdAt: now }
       ];
     } else if (s.includes('amovible')) {
       return [
-        { id: 7, careId: slug, fileName: 'prothese-amovible-1.png', imageUrl: 'assets/images/soins/prothese-amovible-1.png', altText: 'Prothèse dentaire amovible sur mesure', caption: 'Photo 1 / 3 — Structure prothétique complète ajustée', displayOrder: 1, isCover: true, createdAt: now },
-        { id: 8, careId: slug, fileName: 'prothese-amovible-2.png', imageUrl: 'assets/images/soins/prothese-amovible-2.png', altText: 'Essayage clinique et réglage de l\'occlusion', caption: 'Photo 2 / 3 — Contrôle de stabilité et confort masticatoire', displayOrder: 2, isCover: false, createdAt: now },
-        { id: 9, careId: slug, fileName: 'prothese-amovible-3.png', imageUrl: 'assets/images/soins/prothese-amovible-3.png', altText: 'Restitution de l\'harmonie du visage', caption: 'Photo 3 / 3 — Rendu esthétique naturel et stabilité', displayOrder: 3, isCover: false, createdAt: now }
+        { id: '7', careId: slug, fileName: 'prothese-amovible-1.png', imageUrl: 'assets/images/soins/prothese-amovible-1.png', altText: 'Prothèse dentaire amovible sur mesure', caption: 'Photo 1 / 3 — Structure prothétique complète ajustée', displayOrder: 1, isCover: true, createdAt: now },
+        { id: '8', careId: slug, fileName: 'prothese-amovible-2.png', imageUrl: 'assets/images/soins/prothese-amovible-2.png', altText: 'Essayage clinique et réglage de l\'occlusion', caption: 'Photo 2 / 3 — Contrôle de stabilité et confort masticatoire', displayOrder: 2, isCover: false, createdAt: now },
+        { id: '9', careId: slug, fileName: 'prothese-amovible-3.png', imageUrl: 'assets/images/soins/prothese-amovible-3.png', altText: 'Restitution de l\'harmonie du visage', caption: 'Photo 3 / 3 — Rendu esthétique naturel et stabilité', displayOrder: 3, isCover: false, createdAt: now }
       ];
     } else if (s.includes('detartrage')) {
       return [
-        { id: 10, careId: slug, fileName: 'detartrage-1.png', imageUrl: 'assets/images/soins/detartrage-1.png', altText: 'Soin de détartrage professionnel aux ultrasons', caption: 'Photo 1 / 3 — Élimination du tartre et de la plaque', displayOrder: 1, isCover: true, createdAt: now },
-        { id: 11, careId: slug, fileName: 'detartrage-2.png', imageUrl: 'assets/images/soins/detartrage-2.png', altText: 'Polissage prophylactique des surfaces dentaires', caption: 'Photo 2 / 3 — Élimination des taches de surface', displayOrder: 2, isCover: false, createdAt: now },
-        { id: 12, careId: slug, fileName: 'detartrage-3.png', imageUrl: 'assets/images/soins/detartrage-3.png', altText: 'Contrôle de l\'état gingival', caption: 'Photo 3 / 3 — Gencives saines et propreté optimale', displayOrder: 3, isCover: false, createdAt: now }
+        { id: '10', careId: slug, fileName: 'detartrage-1.png', imageUrl: 'assets/images/soins/detartrage-1.png', altText: 'Soin de détartrage professionnel aux ultrasons', caption: 'Photo 1 / 3 — Élimination du tartre et de la plaque', displayOrder: 1, isCover: true, createdAt: now },
+        { id: '11', careId: slug, fileName: 'detartrage-2.png', imageUrl: 'assets/images/soins/detartrage-2.png', altText: 'Polissage prophylactique des surfaces dentaires', caption: 'Photo 2 / 3 — Élimination des taches de surface', displayOrder: 2, isCover: false, createdAt: now },
+        { id: '12', careId: slug, fileName: 'detartrage-3.png', imageUrl: 'assets/images/soins/detartrage-3.png', altText: 'Contrôle de l\'état gingival', caption: 'Photo 3 / 3 — Gencives saines et propreté optimale', displayOrder: 3, isCover: false, createdAt: now }
       ];
     } else {
       return [
-        { id: 13, careId: slug, fileName: 'blanchiment-dentaire-1.png', imageUrl: 'assets/images/soins/blanchiment-dentaire-1.png', altText: 'Sourire éclatant après éclaircissement dentaire', caption: 'Photo 1 / 3 — Traitement professionnel sous supervision', displayOrder: 1, isCover: true, createdAt: now },
-        { id: 14, careId: slug, fileName: 'blanchiment-dentaire-2.png', imageUrl: 'assets/images/soins/blanchiment-dentaire-2.png', altText: 'Protection des tissus gingivaux avant traitement', caption: 'Photo 2 / 3 — Application du gel d\'éclaircissement sécurisé', displayOrder: 2, isCover: false, createdAt: now },
-        { id: 15, careId: slug, fileName: 'blanchiment-dentaire-3.png', imageUrl: 'assets/images/soins/blanchiment-dentaire-3.png', altText: 'Résultat d\'éclat immédiat après séance', caption: 'Photo 3 / 3 — Gain de plusieurs nuances de teinte', displayOrder: 3, isCover: false, createdAt: now }
+        { id: '13', careId: slug, fileName: 'blanchiment-dentaire-1.png', imageUrl: 'assets/images/soins/blanchiment-dentaire-1.png', altText: 'Sourire éclatant après éclaircissement dentaire', caption: 'Photo 1 / 3 — Traitement professionnel sous supervision', displayOrder: 1, isCover: true, createdAt: now },
+        { id: '14', careId: slug, fileName: 'blanchiment-dentaire-2.png', imageUrl: 'assets/images/soins/blanchiment-dentaire-2.png', altText: 'Protection des tissus gingivaux avant traitement', caption: 'Photo 2 / 3 — Application du gel d\'éclaircissement sécurisé', displayOrder: 2, isCover: false, createdAt: now },
+        { id: '15', careId: slug, fileName: 'blanchiment-dentaire-3.png', imageUrl: 'assets/images/soins/blanchiment-dentaire-3.png', altText: 'Résultat d\'éclat immédiat après séance', caption: 'Photo 3 / 3 — Gain de plusieurs nuances de teinte', displayOrder: 3, isCover: false, createdAt: now }
       ];
     }
   }
@@ -403,7 +404,7 @@ export class AdminSoinsComponent implements OnInit, OnDestroy {
   removeFormGalleryItem(index: number): void {
     if (index >= 0 && index < this.formGalleryItems.length) {
       const item = this.formGalleryItems[index];
-      if (item.existingPhoto && item.existingPhoto.id > 0) {
+      if (item.existingPhoto && isPersistedId(item.existingPhoto.id)) {
         this.carePhotoService.deletePhoto(item.existingPhoto.id).subscribe({
           next: () => {
             this.formGalleryItems.splice(index, 1);
@@ -776,7 +777,7 @@ export class AdminSoinsComponent implements OnInit, OnDestroy {
   }
 
   setCoverPhoto(photo: CarePhoto): void {
-    if (photo.id <= 0) return;
+    if (!isPersistedId(photo.id)) return;
     this.carePhotoService.setCoverPhoto(photo.id).subscribe({
       next: () => {
         this.successMessage = 'Photo définie comme photo de couverture.';
@@ -803,7 +804,7 @@ export class AdminSoinsComponent implements OnInit, OnDestroy {
       return;
     }
 
-    if (this.editingPhoto.id <= 0) {
+    if (!isPersistedId(this.editingPhoto.id)) {
       this.closeEditPhotoModal();
       return;
     }
@@ -868,7 +869,7 @@ export class AdminSoinsComponent implements OnInit, OnDestroy {
     const photoToRemove = this.deletingPhoto;
     this.isDeletingPhoto = true;
 
-    if (photoToRemove.id && photoToRemove.id > 0) {
+    if (isPersistedId(photoToRemove.id)) {
       this.carePhotoService.deletePhoto(photoToRemove.id).subscribe({
         next: () => {
           this.isDeletingPhoto = false;

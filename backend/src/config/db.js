@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 
 mongoose.set('strictQuery', true);
+// Chaque document JSON expose `id` (chaîne) en plus de `_id` : le front Angular utilise `id`.
+mongoose.set('toJSON', { virtuals: true, versionKey: false });
 
 async function connectDB(uri) {
   if (!uri) throw new Error('MONGO_URI manquant dans .env');

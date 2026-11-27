@@ -1,7 +1,8 @@
+import { EntityId } from './common.model';
 export type StatutSoin = 'PUBLIE' | 'MASQUE' | 'ARCHIVE';
 
 export interface Soin {
-  id: number;
+  id: EntityId;
   codeSlug: string;
   titre: string;
   descriptionCourte: string;

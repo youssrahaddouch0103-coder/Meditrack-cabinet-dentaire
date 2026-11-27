@@ -1,3 +1,4 @@
+import { EntityId } from '../models/common.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -21,7 +22,7 @@ export class TeamService {
     return this.http.get<TeamMember[]>(this.adminApiUrl);
   }
 
-  getTeamMemberByIdAdmin(id: number): Observable<TeamMember> {
+  getTeamMemberByIdAdmin(id: EntityId): Observable<TeamMember> {
     return this.http.get<TeamMember>(`${this.adminApiUrl}/${id}`);
   }
 
@@ -29,19 +30,19 @@ export class TeamService {
     return this.http.post<TeamMember>(this.adminApiUrl, formData);
   }
 
-  updateTeamMember(id: number, formData: FormData): Observable<TeamMember> {
+  updateTeamMember(id: EntityId, formData: FormData): Observable<TeamMember> {
     return this.http.put<TeamMember>(`${this.adminApiUrl}/${id}`, formData);
   }
 
-  deleteTeamMember(id: number): Observable<{ message: string }> {
+  deleteTeamMember(id: EntityId): Observable<{ message: string }> {
     return this.http.delete<{ message: string }>(`${this.adminApiUrl}/${id}`);
   }
 
-  toggleMemberStatus(id: number): Observable<TeamMember> {
+  toggleMemberStatus(id: EntityId): Observable<TeamMember> {
     return this.http.patch<TeamMember>(`${this.adminApiUrl}/${id}/status`, {});
   }
 
-  reorderTeamMembers(items: { id: number; displayOrder: number }[]): Observable<TeamMember[]> {
+  reorderTeamMembers(items: { id: EntityId; displayOrder: number }[]): Observable<TeamMember[]> {
     return this.http.patch<TeamMember[]>(`${this.adminApiUrl}/reorder`, { items });
   }
 

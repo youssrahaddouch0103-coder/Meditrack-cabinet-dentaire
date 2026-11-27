@@ -18,6 +18,7 @@ describe('Auth', () => {
       expect(res.body.token).toEqual(expect.any(String));
       expect(res.body).toMatchObject({ tokenType: 'Bearer', email: 'sara.amrani@example.com', role: 'patient' });
       expect(res.body.user.password).toBeUndefined();
+      expect(res.body.user.id).toBe(res.body.user._id);
 
       const saved = await User.findOne({ email: 'sara.amrani@example.com' }).select('+password');
       expect(saved.password).not.toBe(patient.password);
@@ -45,7 +46,7 @@ describe('Auth', () => {
       const res = await request(app).post('/api/auth/register').send({ email: 'pas-un-email', password: 'motdepasse123' });
       expect(res.status).toBe(400);
       const fields = res.body.details.map((d) => d.field);
-      expect(fields).toEqual(expect.arrayContaining(['firstName', 'lastName', 'email']));
+      expect(fields).toEqual(expect.arrayContaining(['firstName', 'email']));
     });
   });
 

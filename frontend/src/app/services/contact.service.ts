@@ -1,3 +1,4 @@
+import { EntityId } from '../models/common.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -28,19 +29,19 @@ export class ContactService {
     return this.http.get<{ count: number }>(`${this.adminUrl}/non-lus-count`);
   }
 
-  obtenirMessageParIdAdmin(id: number): Observable<MessageContactResponse> {
+  obtenirMessageParIdAdmin(id: EntityId): Observable<MessageContactResponse> {
     return this.http.get<MessageContactResponse>(`${this.adminUrl}/${id}`);
   }
 
-  marquerCommeLuAdmin(id: number): Observable<MessageContactResponse> {
+  marquerCommeLuAdmin(id: EntityId): Observable<MessageContactResponse> {
     return this.http.patch<MessageContactResponse>(`${this.adminUrl}/${id}/lu`, {});
   }
 
-  marquerCommeNonLuAdmin(id: number): Observable<MessageContactResponse> {
+  marquerCommeNonLuAdmin(id: EntityId): Observable<MessageContactResponse> {
     return this.http.patch<MessageContactResponse>(`${this.adminUrl}/${id}/non-lu`, {});
   }
 
-  supprimerMessageAdmin(id: number): Observable<void> {
+  supprimerMessageAdmin(id: EntityId): Observable<void> {
     return this.http.delete<void>(`${this.adminUrl}/${id}`);
   }
 }

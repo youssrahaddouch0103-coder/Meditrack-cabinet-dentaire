@@ -1,3 +1,4 @@
+import { EntityId } from './common.model';
 export interface CreationMessageContactRequest {
   nomComplet: string;
   email: string;
@@ -7,7 +8,7 @@ export interface CreationMessageContactRequest {
 }
 
 export interface MessageContactResponse {
-  id: number;
+  id: EntityId;
   nomComplet: string;
   email: string;
   telephone?: string;
