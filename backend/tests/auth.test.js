@@ -102,3 +102,13 @@ describe('Auth', () => {
     });
   });
 });
+
+describe('POST /api/auth/register sans nom de famille', () => {
+  it('accepte un patient avec seulement un prénom', async () => {
+    const res = await request(app)
+      .post('/api/auth/register')
+      .send({ firstName: 'Tarik', email: 'sans.nom@example.com', password: 'Password123' });
+    expect(res.status).toBe(201);
+    expect(res.body.user.lastName).toBe('');
+  });
+});
