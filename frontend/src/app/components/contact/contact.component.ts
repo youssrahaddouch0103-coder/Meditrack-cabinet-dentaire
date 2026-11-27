@@ -20,8 +20,8 @@ export class ContactComponent implements OnInit {
   settings: CabinetSettings = {};
   scheduleList: FormattedScheduleDay[] = [];
 
-  googleMapsSearchUrl: string = 'https://www.google.com/maps/search/?api=1&query=Meknes%2C+Maroc';
-  googleMapsDirectionsUrl: string = 'https://www.google.com/maps/dir/?api=1&destination=Meknes%2C+Maroc';
+  googleMapsSearchUrl: string = 'https://www.google.com/maps/search/?api=1&query=Temara%2C+Maroc';
+  googleMapsDirectionsUrl: string = 'https://www.google.com/maps/dir/?api=1&destination=Temara%2C+Maroc';
   safeGoogleMapsEmbedUrl!: SafeResourceUrl;
 
   contactForm!: FormGroup;
@@ -70,7 +70,7 @@ export class ContactComponent implements OnInit {
   }
 
   updateGoogleMapsUrls(settings: CabinetSettings): void {
-    const mapsUrl = (settings.googleMapsUrl || '').trim() || 'https://maps.google.com/?q=Meknes+Maroc';
+    const mapsUrl = (settings.googleMapsUrl || '').trim() || 'https://maps.google.com/?q=Temara+Maroc';
     this.googleMapsSearchUrl = mapsUrl;
     this.googleMapsDirectionsUrl = mapsUrl;
 

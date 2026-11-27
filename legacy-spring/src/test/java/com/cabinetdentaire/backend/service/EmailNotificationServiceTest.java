@@ -38,7 +38,7 @@ class EmailNotificationServiceTest {
 
     @BeforeEach
     void setUp() {
-        ReflectionTestUtils.setField(appointmentEmailService, "fromEmail", "contact@meditrack.local");
+        ReflectionTestUtils.setField(appointmentEmailService, "fromEmail", "ytsmilecenter@gmail.com");
         ReflectionTestUtils.setField(appointmentEmailService, "cabinetName", "centre médical MediTrack");
 
         rendezVous = new RendezVous();

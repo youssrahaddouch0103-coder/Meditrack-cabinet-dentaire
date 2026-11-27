@@ -51,7 +51,7 @@ import { AuthService } from '../../../services/auth.service';
           <span>{{ errorMessage }}</span>
         </div>
 
-        <!-- METHODE 1 : Email administrateur (contact@meditrack.local) -->
+        <!-- METHODE 1 : Email administrateur (ytsmilecenter@gmail.com) -->
         <form *ngIf="activeTab === 'login_email'" [formGroup]="forgotForm" (ngSubmit)="submitForgotEmail()" class="forgot-form" novalidate>
           <div class="form-instruction">
             Saisissez l'adresse e-mail de votre compte administrateur. Un lien sécurisé de réinitialisation vous sera envoyé par e-mail.
@@ -66,7 +66,7 @@ import { AuthService } from '../../../services/auth.service';
                 id="email" 
                 formControlName="email" 
                 class="form-control" 
-                placeholder="contact@meditrack.local">
+                placeholder="ytsmilecenter@gmail.com">
             </div>
             <div class="error-msg" *ngIf="f['email'].invalid && (f['email'].touched || isSubmitted)">
               <span *ngIf="f['email'].errors?.['required']">L'adresse e-mail est obligatoire.</span>
@@ -112,7 +112,7 @@ import { AuthService } from '../../../services/auth.service';
                 id="newLoginEmail" 
                 formControlName="newLoginEmail" 
                 class="form-control" 
-                placeholder="contact@meditrack.local">
+                placeholder="ytsmilecenter@gmail.com">
             </div>
             <div class="error-msg" *ngIf="ef['newLoginEmail'].invalid && (ef['newLoginEmail'].touched || isSubmitted)">
               <span *ngIf="ef['newLoginEmail'].errors?.['required']">L'adresse e-mail de connexion est obligatoire.</span>
@@ -459,12 +459,12 @@ export class AdminForgotPasswordComponent implements OnInit {
 
   ngOnInit(): void {
     this.forgotForm = this.fb.group({
-      email: ['contact@meditrack.local', [Validators.required, Validators.email]]
+      email: ['ytsmilecenter@gmail.com', [Validators.required, Validators.email]]
     });
 
     this.emergencyForm = this.fb.group({
       recoveryCode: ['', [Validators.required]],
-      newLoginEmail: ['contact@meditrack.local', [Validators.required, Validators.email]],
+      newLoginEmail: ['ytsmilecenter@gmail.com', [Validators.required, Validators.email]],
       newPassword: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required]]
     }, { validators: this.passwordMatchValidator });

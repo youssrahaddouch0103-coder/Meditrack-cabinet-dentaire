@@ -24,7 +24,7 @@ public class AppointmentEmailServiceImpl implements AppointmentEmailService, Not
 
     private final JavaMailSender mailSender;
 
-    @Value("${app.mail.from:${spring.mail.username:contact@meditrack.local}}")
+    @Value("${app.mail.from:${spring.mail.username:ytsmilecenter@gmail.com}}")
     private String fromEmail;
 
     @Value("${app.mail.cabinet-name:Cabinet dentaire}")
@@ -56,16 +56,16 @@ public class AppointmentEmailServiceImpl implements AppointmentEmailService, Not
     }
 
     // E-mail 1 de Contact : Notification interne au Cabinet
-    // FROM: contact@meditrack.local | TO: contact@meditrack.local | REPLY-TO: patient@gmail.com
+    // FROM: ytsmilecenter@gmail.com | TO: ytsmilecenter@gmail.com | REPLY-TO: patient@gmail.com
     public boolean sendContactMessageNotificationToCabinet(MessageContact msg) {
         String sujet = "Nouveau message de contact : " + msg.getSujet() + " – " + cabinetName;
         String htmlContent = construireHtmlContactCabinet(msg);
-        String cabinetTarget = (fromEmail != null && !fromEmail.isBlank()) ? fromEmail : "contact@meditrack.local";
+        String cabinetTarget = (fromEmail != null && !fromEmail.isBlank()) ? fromEmail : "ytsmilecenter@gmail.com";
         return envoyerEmailMetier(cabinetTarget, sujet, htmlContent, msg.getId(), "CONTACT_CABINET", msg.getEmail(), msg.getNomComplet());
     }
 
     // E-mail 2 de Contact : Accusé de réception automatique au Patient
-    // FROM: contact@meditrack.local | TO: patient@gmail.com
+    // FROM: ytsmilecenter@gmail.com | TO: patient@gmail.com
     public boolean sendContactAcknowledgementToPatient(MessageContact msg) {
         String sujet = "Accusé de réception de votre message – " + cabinetName;
         String htmlContent = construireHtmlContactAccusePatient(msg);
@@ -94,7 +94,7 @@ public class AppointmentEmailServiceImpl implements AppointmentEmailService, Not
             return false;
         }
 
-        String senderEmail = (fromEmail != null && !fromEmail.isBlank()) ? fromEmail : "contact@meditrack.local";
+        String senderEmail = (fromEmail != null && !fromEmail.isBlank()) ? fromEmail : "ytsmilecenter@gmail.com";
 
         log.info("Appointment email:\ntype={}\nfromConfigured={}\npatientEmailPresent={}\nrecipientSource=APPOINTMENT.patientEmail",
                 typeNotification,

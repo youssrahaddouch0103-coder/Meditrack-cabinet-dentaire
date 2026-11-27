@@ -167,22 +167,22 @@ public class CabinetSettingsServiceImpl implements CabinetSettingsService {
     private CabinetSettings createDefaultSettings() {
         CabinetSettings settings = new CabinetSettings();
         settings.setHeroImageUrl("assets/hero-dentist.png");
-        settings.setHeroImageAlt("centre médical MediTrack à Meknès");
+        settings.setHeroImageAlt("centre médical MediTrack à Témara");
 
         settings.setWhyChooseUsImageUrl("assets/why-us-clinic.png");
-        settings.setWhyChooseUsImageAlt("Intérieur moderne du cabinet dentaire avec équipements de pointe");
+        settings.setWhyChooseUsImageAlt("Intérieur moderne du centre médical avec équipements de pointe");
 
         settings.setAboutImageUrl("assets/about-cabinet.png");
         settings.setAboutImageAlt("Accueil et espace de soin lumineux du centre médical MediTrack");
 
-        settings.setLandlinePhone("05 35 00 00 00");
-        settings.setMobilePhone("06 00 00 00 00");
-        settings.setEmail("contact@meditrack.local");
-        settings.setInstagramUrl("https://www.instagram.com/meditrack/");
+        settings.setLandlinePhone("05 37 61 00 84");
+        settings.setMobilePhone("06 71 35 95 70");
+        settings.setEmail("ytsmilecenter@gmail.com");
+        settings.setInstagramUrl("https://www.instagram.com/yt_smile_center/");
 
         settings.setAddressLine("Avenue Moulay Youssef");
-        settings.setCity("Meknès");
-        settings.setPostalCode("50000");
+        settings.setCity("Témara");
+        settings.setPostalCode("12000");
         settings.setCountry("Maroc");
 
         settings.setGoogleMapsUrl("https://maps.app.goo.gl/SWdXYeqNsKtVG5yn6");

@@ -18,7 +18,7 @@ public class AdminSecurityEmailServiceImpl implements AdminSecurityEmailService 
 
     private final JavaMailSender mailSender;
 
-    @Value("${app.mail.from:${spring.mail.username:contact@meditrack.local}}")
+    @Value("${app.mail.from:${spring.mail.username:ytsmilecenter@gmail.com}}")
     private String fromEmail;
 
     @Value("${app.mail.cabinet-name:centre médical MediTrack}")
@@ -101,7 +101,7 @@ public class AdminSecurityEmailServiceImpl implements AdminSecurityEmailService 
             MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true, StandardCharsets.UTF_8.name());
 
-            String senderEmail = (fromEmail != null && !fromEmail.isBlank()) ? fromEmail : "contact@meditrack.local";
+            String senderEmail = (fromEmail != null && !fromEmail.isBlank()) ? fromEmail : "ytsmilecenter@gmail.com";
             helper.setFrom(senderEmail, cabinetName);
             helper.setTo(toEmail.trim());
             helper.setSubject(subject);

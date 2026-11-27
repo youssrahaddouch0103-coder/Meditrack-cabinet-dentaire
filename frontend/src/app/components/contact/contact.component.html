@@ -37,7 +37,7 @@
                   <span>Fixe : {{ settings.landlinePhone }}</span>
                 </a>
                 <a [href]="formatWhatsAppLink(settings.mobilePhone)" target="_blank" rel="noopener noreferrer" class="item-address-link" style="margin-top: 2px;">
-                  <span>WhatsApp / Mobile : <strong>{{ settings.mobilePhone || '06 00 00 00 00' }}</strong></span>
+                  <span>WhatsApp / Mobile : <strong>{{ settings.mobilePhone || '06 71 35 95 70' }}</strong></span>
                 </a>
               </div>
             </div>
@@ -63,7 +63,7 @@
               <div class="info-content">
                 <span class="item-label">Instagram Officiel</span>
                 <a 
-                  [href]="settings.instagramUrl || 'https://www.instagram.com/meditrack/'" 
+                  [href]="settings.instagramUrl || 'https://www.instagram.com/yt_smile_center/'" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   class="item-address-link instagram-link"
@@ -81,7 +81,7 @@
               </div>
               <div class="info-content">
                 <span class="item-label">Ville & Adresse</span>
-                <a [href]="settings.googleMapsUrl || 'https://maps.google.com/?q=Meknes+Maroc'" target="_blank" rel="noopener noreferrer" class="item-address-link" title="Ouvrir la carte Google Maps dans un nouvel onglet">
+                <a [href]="settings.googleMapsUrl || 'https://maps.google.com/?q=Temara+Maroc'" target="_blank" rel="noopener noreferrer" class="item-address-link" title="Ouvrir la carte Google Maps dans un nouvel onglet">
                   <span>{{ formatLocationDisplay() }}</span>
                   <span class="material-symbols-outlined open-icon" aria-hidden="true" style="font-size: 1rem; margin-left: 4px;">open_in_new</span>
                 </a>
@@ -209,7 +209,7 @@
                   id="contact-phone" 
                   formControlName="phone" 
                   class="form-control" 
-                  placeholder="ex. 06 00 00 00 00"
+                  placeholder="ex. 06 71 35 95 70"
                   autocomplete="tel"
                   [attr.aria-invalid]="f['phone'].invalid && (f['phone'].touched || isSubmitted)">
               </div>
@@ -318,7 +318,7 @@
         <div class="map-details-bar">
           <div class="address-info-block">
             <a 
-              [href]="settings.googleMapsUrl || 'https://maps.google.com/?q=Meknes+Maroc'" 
+              [href]="settings.googleMapsUrl || 'https://maps.google.com/?q=Temara+Maroc'" 
               target="_blank" 
               rel="noopener noreferrer" 
               class="address-link" 
@@ -331,7 +331,7 @@
 
           <div class="directions-btn-block">
             <a 
-              [href]="settings.googleMapsUrl || 'https://maps.google.com/?q=Meknes+Maroc'" 
+              [href]="settings.googleMapsUrl || 'https://maps.google.com/?q=Temara+Maroc'" 
               target="_blank" 
               rel="noopener noreferrer" 
               class="btn-directions">

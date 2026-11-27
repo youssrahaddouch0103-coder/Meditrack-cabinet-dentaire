@@ -18,7 +18,7 @@ export class HeroComponent implements OnInit {
   heroHighlights = [
     { icon: 'health_and_safety', title: 'Soins personnalisés' },
     { icon: 'verified_user', title: 'Équipe qualifiée' },
-    { icon: 'location_on', title: 'Meknès, Maroc' }
+    { icon: 'location_on', title: 'Témara, Maroc' }
   ];
 
   constructor(private settingsService: CabinetSettingsService) {}
