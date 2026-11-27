@@ -23,7 +23,9 @@ const userSchema = new mongoose.Schema(
     specialty: { type: mongoose.Schema.Types.ObjectId, ref: 'Specialty' },
     title: { type: String, trim: true, maxlength: 80 },
     active: { type: Boolean, default: true },
-    lastLoginAt: Date
+    lastLoginAt: Date,
+    // Blocage temporaire après trop d'échecs au code 2FA
+    lockUntil: Date
   },
   { timestamps: true }
 );
@@ -33,6 +35,10 @@ userSchema.pre('save', async function hashPassword(next) {
   this.password = await bcrypt.hash(this.password, SALT_ROUNDS);
   return next();
 });
+
+userSchema.methods.isLocked = function isLocked() {
+  return Boolean(this.lockUntil && this.lockUntil > new Date());
+};
 
 userSchema.methods.comparePassword = function comparePassword(candidate) {
   return bcrypt.compare(candidate, this.password);

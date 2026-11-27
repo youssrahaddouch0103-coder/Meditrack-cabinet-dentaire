@@ -8,6 +8,7 @@ const auth = require('../controllers/auth.controller');
 
 router.post('/register', authLimiter, validate(rules.register), asyncHandler(auth.register));
 router.post('/login', authLimiter, validate(rules.login), asyncHandler(auth.login));
+router.post('/2fa/verify', authLimiter, validate(rules.verifyTwoFactor), asyncHandler(auth.verifyTwoFactor));
 router.get('/me', authenticate, auth.me);
 
 module.exports = router;

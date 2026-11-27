@@ -9,6 +9,14 @@ const env = {
   jwtExpiresIn: process.env.JWT_EXPIRES_IN || '1d',
   frontendUrl: process.env.FRONTEND_URL || 'http://localhost:4200',
   authRateLimit: Number(process.env.AUTH_RATE_LIMIT) || 10,
+  twoFactorEnabled: process.env.TWO_FACTOR_ENABLED !== 'false',
+  smtp: {
+    host: process.env.SMTP_HOST || '',
+    port: Number(process.env.SMTP_PORT) || 587,
+    user: process.env.SMTP_USER || '',
+    pass: process.env.SMTP_PASS || '',
+    from: process.env.MAIL_FROM || 'MediTrack <no-reply@meditrack.ma>'
+  },
   authRateWindowMs: Number(process.env.AUTH_RATE_WINDOW_MS) || 15 * 60 * 1000
 };
 
