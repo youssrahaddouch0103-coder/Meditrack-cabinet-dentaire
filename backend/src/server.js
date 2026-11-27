@@ -1,11 +1,11 @@
-require('dotenv').config({ path: require('path').resolve(__dirname, '../../.env') });
+const env = require('./config/env');
 const app = require('./app');
-const connectDB = require('./config/db');
+const { connectDB } = require('./config/db');
 
-const PORT = process.env.PORT || 3000;
-
-connectDB(process.env.MONGO_URI)
-  .then(() => app.listen(PORT, () => console.log(`API MediTrack sur http://localhost:${PORT}`)))
+connectDB(env.mongoUri)
+  .then(() => {
+    app.listen(env.port, () => console.log(`API MediTrack sur http://localhost:${env.port}`));
+  })
   .catch((err) => {
     console.error(err.message);
     process.exit(1);

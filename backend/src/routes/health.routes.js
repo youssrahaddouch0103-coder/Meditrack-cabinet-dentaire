@@ -1,8 +1,6 @@
 const router = require('express').Router();
-const mongoose = require('mongoose');
+const { getHealth } = require('../controllers/health.controller');
 
-router.get('/', (req, res) => {
-  res.json({ status: 'ok', db: mongoose.connection.readyState === 1 ? 'up' : 'down' });
-});
+router.get('/', getHealth);
 
 module.exports = router;
