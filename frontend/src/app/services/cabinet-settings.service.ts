@@ -14,11 +14,11 @@ export class CabinetSettingsService {
 
   private defaultSettings: CabinetSettings = {
     heroImageUrl: 'assets/hero-dentist.png',
-    heroImageAlt: 'centre médical MediTrack à Témara',
+    heroImageAlt: 'cabinet dentaire MediTrack à Témara',
     whyChooseUsImageUrl: 'assets/why-us-clinic.png',
-    whyChooseUsImageAlt: 'Intérieur moderne du centre médical avec équipements de pointe',
+    whyChooseUsImageAlt: 'Intérieur moderne du cabinet dentaire avec équipements de pointe',
     aboutImageUrl: 'assets/about-cabinet.png',
-    aboutImageAlt: 'Accueil et espace de soin lumineux du centre médical MediTrack',
+    aboutImageAlt: 'Accueil et espace de soin lumineux du cabinet dentaire MediTrack',
 
     landlinePhone: '05 37 61 00 84',
     mobilePhone: '06 71 35 95 70',

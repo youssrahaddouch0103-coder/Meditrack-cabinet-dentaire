@@ -6,15 +6,15 @@ const data = require('../src/seed/data');
 const opts = { adminEmail: 'admin@meditrack.ma', adminPassword: 'admin-secret-123', log: () => {} };
 
 describe('Script de seed', () => {
-  it('crée l’admin, les spécialités et les médecins', async () => {
+  it('crée l’admin, les spécialités et les dentistes', async () => {
     await seed(opts);
     expect(await Specialty.countDocuments()).toBe(data.specialties.length);
     const admin = await User.findOne({ email: 'admin@meditrack.ma' }).select('+password');
     expect(admin.role).toBe('admin');
     expect(await admin.comparePassword('admin-secret-123')).toBe(true);
-    const doctors = await User.find({ role: 'medecin' }).populate('specialty');
+    const doctors = await User.find({ role: 'dentiste' }).populate('specialty');
     expect(doctors).toHaveLength(data.doctors.length);
-    expect(doctors[0].specialty.slug).toBe('dentaire');
+    expect(doctors[0].specialty.slug).toBe('dentisterie-generale');
   });
 
   it('est relançable sans doublons et sans écraser le mot de passe admin', async () => {
@@ -22,7 +22,7 @@ describe('Script de seed', () => {
     await seed({ ...opts, adminPassword: 'autre-mot-de-passe' });
     expect(await Specialty.countDocuments()).toBe(data.specialties.length);
     expect(await User.countDocuments({ role: 'admin' })).toBe(1);
-    expect(await User.countDocuments({ role: 'medecin' })).toBe(data.doctors.length);
+    expect(await User.countDocuments({ role: 'dentiste' })).toBe(data.doctors.length);
     const admin = await User.findOne({ role: 'admin' }).select('+password');
     expect(await admin.comparePassword('admin-secret-123')).toBe(true);
   });

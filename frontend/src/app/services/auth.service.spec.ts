@@ -42,14 +42,14 @@ describe('AuthService', () => {
   });
 
   it('valide le code 2FA et enregistre la session avec l’utilisateur', () => {
-    const token = fakeJwt('medecin');
+    const token = fakeJwt('dentiste');
     service.verifyTwoFactor('c1', '123456').subscribe();
     const req = http.expectOne('/api/auth/2fa/verify');
     expect(req.request.body).toEqual({ challengeId: 'c1', code: '123456' });
-    req.flush({ token, tokenType: 'Bearer', email: 'm@b.ma', role: 'medecin', user: { id: 'u1', firstName: 'Tarik', lastName: '', email: 'm@b.ma', role: 'medecin' } });
+    req.flush({ token, tokenType: 'Bearer', email: 'm@b.ma', role: 'dentiste', user: { id: 'u1', firstName: 'Tarik', lastName: '', email: 'm@b.ma', role: 'dentiste' } });
 
     expect(service.getUser()?.firstName).toBe('Tarik');
-    expect(service.getRole()).toBe('medecin');
+    expect(service.getRole()).toBe('dentiste');
   });
 
   it('inscrit un patient et le connecte', () => {
@@ -58,7 +58,7 @@ describe('AuthService', () => {
     http.expectOne('/api/auth/register').flush({ token, tokenType: 'Bearer', email: 's@b.ma', role: 'patient' });
 
     expect(service.hasRole('patient')).toBeTrue();
-    expect(service.hasRole('admin', 'medecin')).toBeFalse();
+    expect(service.hasRole('admin', 'dentiste')).toBeFalse();
   });
 
   it('lit le rôle dans le jeton et pas dans le localStorage', () => {

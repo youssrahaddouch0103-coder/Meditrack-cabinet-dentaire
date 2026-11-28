@@ -34,7 +34,7 @@ describe('roleGuard', () => {
   });
 
   it('renvoie un membre du personnel non autorisé vers le tableau de bord', () => {
-    loginAs('infirmier');
+    loginAs('assistant');
     expect(router.serializeUrl(run(['admin']) as UrlTree)).toBe('/admin/tableau-de-bord');
   });
 
@@ -44,7 +44,7 @@ describe('roleGuard', () => {
   });
 
   it('réserve par défaut les routes au personnel', () => {
-    loginAs('pharmacien');
+    loginAs('assistant');
     expect(run()).toBeTrue();
     loginAs('patient');
     expect(router.serializeUrl(run() as UrlTree)).toBe('/');

@@ -1,12 +1,12 @@
 import { Role } from '../models/auth.model';
 
 /** Rôles qui ont accès à l'espace de gestion (/admin). */
-export const STAFF_ROLES: Role[] = ['admin', 'medecin', 'infirmier', 'pharmacien'];
+export const STAFF_ROLES: Role[] = ['admin', 'dentiste', 'assistant'];
 
 /** Rôles autorisés pour chaque page de l'espace de gestion. */
 export const ADMIN_PAGE_ROLES: Record<string, Role[]> = {
   'tableau-de-bord': STAFF_ROLES,
-  'rendez-vous': ['admin', 'medecin', 'infirmier'],
+  'rendez-vous': ['admin', 'dentiste', 'assistant'],
   soins: ['admin'],
   messages: ['admin'],
   avis: ['admin'],
@@ -16,8 +16,7 @@ export const ADMIN_PAGE_ROLES: Record<string, Role[]> = {
 
 export const ROLE_LABELS: Record<Role, string> = {
   patient: 'Patient',
-  medecin: 'Médecin',
-  infirmier: 'Infirmier',
-  pharmacien: 'Pharmacien',
+  dentiste: 'Dentiste',
+  assistant: 'Assistant(e)',
   admin: 'Administrateur'
 };

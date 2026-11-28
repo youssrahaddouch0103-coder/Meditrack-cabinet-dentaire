@@ -4,7 +4,7 @@ export interface LoginRequest {
   motDePasse: string;
 }
 
-export type Role = 'patient' | 'medecin' | 'infirmier' | 'pharmacien' | 'admin';
+export type Role = 'patient' | 'dentiste' | 'assistant' | 'admin';
 
 export interface AppUser {
   id: EntityId;
