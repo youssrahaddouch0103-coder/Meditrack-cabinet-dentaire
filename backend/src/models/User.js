@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
-const ROLES = ['patient', 'medecin', 'infirmier', 'pharmacien', 'admin'];
+const ROLES = ['patient', 'dentiste', 'assistant', 'admin'];
 const SALT_ROUNDS = 12;
 
 const userSchema = new mongoose.Schema(
@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema(
     phone: { type: String, trim: true, maxlength: 20 },
     password: { type: String, required: true, minlength: 8, select: false },
     role: { type: String, enum: ROLES, default: 'patient' },
-    // Renseignés pour les médecins uniquement
+    // Renseignés pour les dentistes uniquement
     specialty: { type: mongoose.Schema.Types.ObjectId, ref: 'Specialty' },
     title: { type: String, trim: true, maxlength: 80 },
     active: { type: Boolean, default: true },

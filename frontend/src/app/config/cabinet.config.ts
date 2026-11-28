@@ -39,7 +39,7 @@ export const CABINET_INFO: CabinetInfo = {
   instagramUrl: 'https://www.instagram.com/yt_smile_center/',
   instagramHandle: '@yt_smile_center',
   slogan: 'Votre santé, notre priorité',
-  presentation: 'MediTrack vous accueille à Témara dans un centre médical pluridisciplinaire : consultations, suivi de votre dossier et prise de rendez-vous en ligne.',
+  presentation: 'MediTrack vous accueille à Témara dans un cabinet dentaire moderne : soins, suivi de votre dossier et prise de rendez-vous en ligne.',
   demoAddress: 'Place El Hedim, Meknès, Maroc',
   addressDisclaimer: 'Adresse de démonstration — à remplacer'
 };

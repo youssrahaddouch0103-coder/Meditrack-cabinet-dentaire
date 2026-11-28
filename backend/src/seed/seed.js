@@ -30,13 +30,13 @@ async function seed({ adminEmail, adminPassword, doctorPassword, log = console.l
   for (const d of data.doctors) {
     if (await User.exists({ email: d.email })) continue;
     const password = doctorPassword || crypto.randomBytes(9).toString('base64url');
-    await User.create({ ...d, specialty: bySlug[d.specialty], role: 'medecin', password });
+    await User.create({ ...d, specialty: bySlug[d.specialty], role: 'dentiste', password });
     report.doctors.push({ email: d.email, password: doctorPassword ? '(SEED_DOCTOR_PASSWORD)' : password });
   }
 
   log(`Spécialités ajoutées : ${report.specialties} (total ${data.specialties.length})`);
   log(`Admin : ${report.admin}`);
-  report.doctors.forEach((d) => log(`Médecin créé : ${d.email} / mot de passe : ${d.password}`));
+  report.doctors.forEach((d) => log(`Dentiste créé : ${d.email} / mot de passe : ${d.password}`));
   return report;
 }
 

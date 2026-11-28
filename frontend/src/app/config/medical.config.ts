@@ -7,40 +7,40 @@ export interface Specialty {
 
 export const SPECIALTIES: Specialty[] = [
   {
-    id: 'medecine-generale',
-    name: 'Médecine générale',
-    icon: 'stethoscope',
-    description: 'Consultations de premier recours, bilans de santé, suivi des maladies chroniques et orientation vers le bon spécialiste.'
-  },
-  {
-    id: 'dentaire',
+    id: 'dentisterie-generale',
     name: 'Soins dentaires',
     icon: 'dentistry',
-    description: 'Couronnes, restaurations, prothèses, détartrage et blanchiment, réalisés par notre équipe dentaire.'
+    description: 'Consultations, détartrage, traitement des caries et dévitalisations.'
   },
   {
-    id: 'pediatrie',
-    name: 'Pédiatrie',
+    id: 'orthodontie',
+    name: 'Orthodontie',
+    icon: 'sentiment_satisfied',
+    description: 'Alignement des dents par appareils fixes ou gouttières, pour enfants et adultes.'
+  },
+  {
+    id: 'implantologie',
+    name: 'Implantologie',
+    icon: 'hardware',
+    description: 'Remplacement des dents manquantes par implants et couronnes sur implant.'
+  },
+  {
+    id: 'protheses',
+    name: 'Prothèses dentaires',
+    icon: 'medical_services',
+    description: 'Couronnes, bridges et prothèses amovibles réalisés sur mesure.'
+  },
+  {
+    id: 'pedodontie',
+    name: 'Pédodontie',
     icon: 'child_care',
-    description: 'Suivi de la croissance, vaccinations et consultations pour les nourrissons, enfants et adolescents.'
+    description: 'Soins dentaires adaptés aux enfants, prévention et suivi de la croissance dentaire.'
   },
   {
-    id: 'cardiologie',
-    name: 'Cardiologie',
-    icon: 'cardiology',
-    description: 'Dépistage et suivi des maladies du cœur et des vaisseaux, électrocardiogramme et bilan tensionnel.'
-  },
-  {
-    id: 'gynecologie',
-    name: 'Gynécologie',
-    icon: 'pregnant_woman',
-    description: 'Suivi gynécologique, contraception et accompagnement de la grossesse.'
-  },
-  {
-    id: 'dermatologie',
-    name: 'Dermatologie',
-    icon: 'dermatology',
-    description: 'Diagnostic et traitement des affections de la peau, des cheveux et des ongles.'
+    id: 'esthetique',
+    name: 'Esthétique dentaire',
+    icon: 'auto_awesome',
+    description: 'Blanchiment, facettes et soins esthétiques pour un sourire harmonieux.'
   }
 ];
 

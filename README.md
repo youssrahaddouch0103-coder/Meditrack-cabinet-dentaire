@@ -1,6 +1,6 @@
 # MediTrack
 
-Application de gestion d'un centre médical : dossiers patients, rendez-vous, consultations, ordonnances et pharmacie.
+Application de gestion d'un cabinet dentaire : dossiers patients avec schéma dentaire, rendez-vous, soins, plans de traitement et ordonnances.
 
 Stack : Angular 17 (front) · Express + MongoDB (API) · Docker.
 
@@ -39,7 +39,7 @@ Il faut une base MongoDB qui tourne sur `localhost:27017` (ou lancer seulement `
 ```bash
 cp .env.example .env                    # remplir JWT_SECRET (32 caractères min.) et ADMIN_PASSWORD
 docker compose up -d --build            # mongo + api + front
-docker compose exec api npm run seed    # admin, spécialités et médecins (une seule fois)
+docker compose exec api npm run seed    # admin, spécialités et dentistes (une seule fois)
 ```
 
 Le site est sur http://localhost:8080 (port modifiable avec `WEB_PORT`, adresse publique avec `PUBLIC_URL`). Nginx sert le front et relaie `/api` vers l'API.
