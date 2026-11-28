@@ -9,7 +9,7 @@ Backlog : projet Jira **MED** (4 sprints d'une semaine).
 ## Structure
 
 ```
-frontend/       Angular 17, repris du site YT Smile Center (à nettoyer : US00, US03)
+frontend/       Angular 17 (site public + espace de gestion)
 backend/        API Express + Mongoose
   src/config       variables d'environnement, connexion MongoDB
   src/routes       routes, montées sous /api
@@ -17,7 +17,6 @@ backend/        API Express + Mongoose
   src/models       schémas Mongoose
   src/middlewares  erreurs, 404, auth
   tests/           tests Jest + Supertest
-legacy-spring/  ancien backend Spring Boot, archivé pour référence
 ```
 
 ## Démarrer en local
